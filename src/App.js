@@ -37,12 +37,14 @@ function App(props) {
   }, [])
   
   return (
+    <>
     <Routes>
       <Route index element={<HomePage fairytaleData={data} alertMessage={alertMessage} waiting={isFetching}/>} />
       <Route path="home" element={<HomePage fairytaleData={data} alertMessage={alertMessage} waiting={isFetching}/>} />
       <Route path="about" element={<AboutPage />} />
       <Route path="*" element={<Navigate to="/home" />} ></Route>
     </Routes>
+    </>
 
     // <div className="App">
     //   <header className="App-header">
