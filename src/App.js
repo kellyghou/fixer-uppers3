@@ -5,6 +5,8 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
 
+import fairytaleData from './data/fairytales.json';
+
 import { HomePage } from './Homepage';
 import { AboutPage } from './AboutPage';
 
@@ -39,6 +41,7 @@ function App(props) {
       <Route index element={<HomePage fairytaleData={data} alertMessage={alertMessage} waiting={isFetching}/>} />
       <Route path="home" element={<HomePage fairytaleData={data} alertMessage={alertMessage} waiting={isFetching}/>} />
       <Route path="about" element={<AboutPage />} />
+      <Route path="*" element={<Navigate to="/home" />} ></Route>
     </Routes>
 
     // <div className="App">
