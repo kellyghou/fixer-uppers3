@@ -4,7 +4,7 @@ export default function Filters(props) {
     const callback = props.applyFilterCallback;
     const [selectedContinent, setSelectedContinent] = useState('');
     const [selectedDuration, setSelectedDuration] = useState('');
-    const [selectedAge, setSelectedAge] = useState('');
+    // const [selectedAge, setSelectedAge] = useState('');
 
     const handleContinentChange = (event) => {
         const updatedSelectedContinent = event.target.value;
@@ -16,14 +16,14 @@ export default function Filters(props) {
         setSelectedDuration(updatedSelectedDuration)
     }
 
-    const handleAgeChange = (event) => {
-        const updatedSelectedAge = event.target.value;
-        setSelectedAge(updatedSelectedAge)
-    }
+    // const handleAgeChange = (event) => {
+    //     const updatedSelectedAge = event.target.value;
+    //     setSelectedAge(updatedSelectedAge)
+    // }
 
     const applyCallback = (event) => {
         event.preventDefault();
-        callback(selectedContinent, selectedDuration, selectedAge)
+        callback(selectedContinent, selectedDuration /*selectedAge*/)
     }
 
 
@@ -35,9 +35,9 @@ export default function Filters(props) {
         return <option key={duration} value={duration}>{duration}</option>
     })
 
-    const ageOptions = props.uniqueAge.map((age) => {
-        return <option key={age} value={age}>{age}</option>
-    })
+    // const ageOptions = props.uniqueAge.map((age) => {
+    //     return <option key={age} value={age}>{age}</option>
+    // })
 
 
 
@@ -59,11 +59,11 @@ export default function Filters(props) {
                         
                     </select>
 
-                    <label htmlFor="age-selection">By Age Rating (+):</label>
+                    {/* <label htmlFor="age-selection">By Age Rating (+):</label>
                     <select name="age-selection" id="age-selection" onChange={handleAgeChange}>
                         <option value="">All Age</option>
                         {ageOptions}
-                    </select> 
+                    </select>  */}
                     <input type="submit" value="Apply Filter" onClick={applyCallback}></input>
                     
                 </form>
