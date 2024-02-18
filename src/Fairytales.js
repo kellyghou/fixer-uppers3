@@ -11,7 +11,7 @@ function FairyCard(props) {
                         <div className='home-card-categories'>
                             <p className="storycard-text border-bottom ">{props.fairy.continent}</p>
                             <p className="storycard-text border-bottom ">{props.fairy.duration} (mins)</p>
-                            <p className="storycard-text border-bottom">{props.fairy.age}+</p>
+                            {/* <p className="storycard-text border-bottom">{props.fairy.age}+</p> */}
                         </div>
                     </div>
                 </div>

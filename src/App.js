@@ -5,8 +5,6 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
 
-import fairytaleData from './data/fairytales.json';
-
 import { HomePage } from './Homepage';
 import { AboutPage } from './AboutPage';
 
