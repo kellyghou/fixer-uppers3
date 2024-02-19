@@ -1,14 +1,23 @@
 import { React,useState } from 'react';
+import Checkbox from '@mui/material/Checkbox';
+import MenuItem from '@mui/material/MenuItem';
+import ListItemText from '@mui/material/ListItemText';
+import { FormControl, InputLabel, Select, SelectChangeEvent } from '@mui/material';
 
 export default function Filters(props) {
     const callback = props.applyFilterCallback;
-    const [selectedContinent, setSelectedContinent] = useState('');
+    const [selectedContinent, setSelectedContinent] = useState([]);
     const [selectedDuration, setSelectedDuration] = useState('');
     // const [selectedAge, setSelectedAge] = useState('');
 
     const handleContinentChange = (event) => {
-        const updatedSelectedContinent = event.target.value;
-        setSelectedContinent(updatedSelectedContinent);
+        // const updatedSelectedContinent = event.target.value;
+        const {
+            target: { value },
+        } = event;
+        setSelectedContinent(
+            typeof value === 'string' ? value.split(',') : value,
+        );
     }
 
     const handleDurationChange = (event) => {
@@ -27,9 +36,10 @@ export default function Filters(props) {
     }
 
 
-    const continentOptions = props.uniqueContinent.map((continentName) => {
-        return <option key={continentName} value={continentName}>{continentName}</option>
-    })
+    // const continentOptions = props.uniqueContinent.map((continentName) => {
+    //     return <Checkbox checked={continentName.indexOf(continentName) > -1} />
+    //     //<option key={continentName} value={continentName}>{continentName}</option>
+    // })
 
     const durationOptions = props.uniqueDuration.map((duration) => {
         return <option key={duration} value={duration}>{duration}</option>
@@ -45,12 +55,16 @@ export default function Filters(props) {
         <section className="homepage-filters">
             <div className="container-filters">
                 <h2>Filters</h2>
-                <form>
-                    <label htmlFor="continent-selection">By Continent:</label>
-                    <select name="continent-selection" id="continent-selection" onChange={handleContinentChange}>
-                        <option value="">All</option>
-                        {continentOptions}
-                    </select>
+                <FormControl>
+                    <InputLabel htmlFor="continent-selection">By Continent:</InputLabel>
+                    <Select name="continent-selection" id="continent-selection" value={selectedContinent} multiple onChange={handleContinentChange}>
+                        {props.uniqueContinent.map((continentName) => (
+                            <MenuItem key={continentName} value={continentName}>
+                                <Checkbox checked={selectedContinent.indexOf(continentName) > -1} />
+                                <ListItemText primary={continentName} />
+                            </MenuItem>
+                        ))}    
+                    </Select>
 
                     <label htmlFor="duration-selection">By Read Time (mins)</label>
                     <select name="duration-selection" id="duration-selection" onChange={handleDurationChange}>
@@ -66,7 +80,7 @@ export default function Filters(props) {
                     </select>  */}
                     <input type="submit" value="Apply Filter" onClick={applyCallback}></input>
                     
-                </form>
+                </FormControl>
             </div>
         </section>);
 }
