@@ -8,15 +8,15 @@ import { NavBar } from './About.js';
 
 export function HomePage(props) {
 
-  const [newSelectedContinent, setNewSelectedContinent] = useState('');
+  const [newSelectedContinent, setNewSelectedContinent] = useState([]);
   const [newSelectedDuration, setNewSelectedDuration] = useState('');
 //   const [newSelectedAge, setNewSelectedAge] = useState('');
 
   let displayedData = props.fairytaleData;
 
-  if (newSelectedContinent !== "") { //users select a continent
+  if (Array.isArray(newSelectedContinent) && newSelectedContinent.length) { //users select a continent
     displayedData = displayedData.filter((data) => {
-      return data.continent === newSelectedContinent; 
+      return newSelectedContinent.includes(data.continent); 
     })
   }
 
@@ -33,7 +33,7 @@ export function HomePage(props) {
 //   }
 
 
-  const applyFilter = (continentString, durationString, ageString) => {
+  const applyFilter = (continentString, durationString) => {
     const updatedNewSelectedContinent = continentString;
     setNewSelectedContinent(updatedNewSelectedContinent)
 
