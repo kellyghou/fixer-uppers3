@@ -90,9 +90,9 @@ span {
   margin-bottom: 3rem;
 }
 
-label {
+/* .label {
   padding: 1rem;
-}
+} */
 
 .container-filters label {
   display: block;
