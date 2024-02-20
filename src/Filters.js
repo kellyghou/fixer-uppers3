@@ -56,8 +56,8 @@ export default function Filters(props) {
             <div className="container-filters">
                 <h2>Filters</h2>
                 <FormControl>
-                    <InputLabel htmlFor="continent-selection">By Continent:</InputLabel>
-                    <Select name="continent-selection" id="continent-selection" value={selectedContinent} multiple onChange={handleContinentChange}>
+                    <InputLabel htmlFor="continent-selection" shrink={false}>Filter by</InputLabel>
+                    <Select name="continent-selection" id="continent-selection" value={selectedContinent} multiple onChange={handleContinentChange} renderValue={(selected) => ''}>
                         {props.uniqueContinent.map((continentName) => (
                             <MenuItem key={continentName} value={continentName}>
                                 <Checkbox checked={selectedContinent.indexOf(continentName) > -1} />
