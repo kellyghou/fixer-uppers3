@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import 'whatwg-fetch';
-import 'bootstrap/dist/css/bootstrap.css';
 
 import fairytaleData from './data/fairytales.json';
+
+import 'bootstrap/dist/css/bootstrap.css';
+import './index.css';
+import 'whatwg-fetch';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
