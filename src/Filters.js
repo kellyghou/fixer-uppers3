@@ -54,8 +54,7 @@ export default function Filters(props) {
     return (
         <section className="homepage-filters">
             <div className="container-filters">
-                <h2>Filters</h2>
-                <FormControl>
+                <FormControl sx={{ m: 1, minWidth: 120 }}>
                     <InputLabel htmlFor="continent-selection" shrink={false}>Filter by</InputLabel>
                     <Select name="continent-selection" id="continent-selection" value={selectedContinent} multiple onChange={handleContinentChange} renderValue={(selected) => ''}>
                         {props.uniqueContinent.map((continentName) => (
@@ -65,22 +64,22 @@ export default function Filters(props) {
                             </MenuItem>
                         ))}    
                     </Select>
-
-                    <label htmlFor="duration-selection">By Read Time (mins)</label>
-                    <select name="duration-selection" id="duration-selection" onChange={handleDurationChange}>
-                        <option value="">All Duration</option>
+                </FormControl>
+                <FormControl sx={{ m: 1, minWidth: 120 }}>
+                    <InputLabel htmlFor="duration-selection">By Read Time (mins)</InputLabel>
+                    <Select name="duration-selection" id="duration-selection" onChange={handleDurationChange}>
+                        <MenuItem value="">All Duration</MenuItem>
                         {durationOptions}
                         
-                    </select>
+                    </Select>
 
                     {/* <label htmlFor="age-selection">By Age Rating (+):</label>
                     <select name="age-selection" id="age-selection" onChange={handleAgeChange}>
                         <option value="">All Age</option>
                         {ageOptions}
                     </select>  */}
-                    <input type="submit" value="Apply Filter" onClick={applyCallback}></input>
-                    
                 </FormControl>
+                <input type="submit" value="Apply Filter" onClick={applyCallback}></input>
             </div>
         </section>);
 }
