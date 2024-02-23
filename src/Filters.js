@@ -54,9 +54,9 @@ export default function Filters(props) {
     return (
         <section className="homepage-filters">
             <div className="container-filters">
-                <FormControl sx={{ m: 1, minWidth: 120 }}>
-                    <InputLabel htmlFor="continent-selection" shrink={false}>Filter by</InputLabel>
-                    <Select name="continent-selection" id="continent-selection" value={selectedContinent} multiple onChange={handleContinentChange} renderValue={(selected) => ''}>
+                <FormControl sx={{m: 1, minWidth: 180, '& .MuiSelect-select' : {color: 'white'}, marginRight: '20rem' }}>
+                    <InputLabel  htmlFor="continent-selection" shrink={false} sx={{fontWeight: '700'}}>Filter by</InputLabel>
+                    <Select name="continent-selection" id="continent-selection" value={selectedContinent} multiple onChange={handleContinentChange} renderValue={(selected) => ''} className="filter" sx={{color: "white", '.MuiOutlinedInput-notchedOutline': {borderColor: 'white', borderWidth: 'medium'},'&.Mui-focused .MuiOutlinedInput-notchedOutline': {borderColor: 'white', borderWidth: 'medium'},'&:hover .MuiOutlinedInput-notchedOutline': {borderColor: 'white', borderWidth: 'medium'},'.MuiSvgIcon-root ': {fill: "white !important",}}}>
                         {props.uniqueContinent.map((continentName) => (
                             <MenuItem key={continentName} value={continentName}>
                                 <Checkbox checked={selectedContinent.indexOf(continentName) > -1} />
@@ -65,12 +65,11 @@ export default function Filters(props) {
                         ))}    
                     </Select>
                 </FormControl>
-                <FormControl sx={{ m: 1, minWidth: 120 }}>
-                    <InputLabel htmlFor="duration-selection">By Read Time (mins)</InputLabel>
-                    <Select name="duration-selection" id="duration-selection" onChange={handleDurationChange}>
+                <FormControl sx={{ m: 1, minWidth: 180 }}>
+                    <InputLabel htmlFor="duration-selection" shrink={false} sx={{fontWeight: '700'}}>Sort by</InputLabel>
+                    <Select name="duration-selection" className="filter" id="duration-selection" onChange={handleDurationChange} sx={{color: "white", '.MuiOutlinedInput-notchedOutline': {borderColor: 'white', borderWidth: 'medium'},'&.Mui-focused .MuiOutlinedInput-notchedOutline': {borderColor: 'white', borderWidth: 'medium'},'&:hover .MuiOutlinedInput-notchedOutline': {borderColor: 'white', borderWidth: 'medium'},'.MuiSvgIcon-root ': {fill: "white !important",}}}>
                         <MenuItem value="">All Duration</MenuItem>
                         {durationOptions}
-                        
                     </Select>
 
                     {/* <label htmlFor="age-selection">By Age Rating (+):</label>

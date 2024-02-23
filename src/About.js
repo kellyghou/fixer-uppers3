@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import * as bootstrap from 'bootstrap';
 
 export function Footer() {
@@ -19,16 +20,13 @@ function NavLinks() {
         <div className="collapse navbar-collapse" id="toggleMobileMenu">
             <ul className="navbar-nav ms-auto">
                 <li className="nav-item">
-                    <Link to="/home">Home</Link>
+                    <Link to="/home" className="nav-link">Home</Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="/about">About</Link>
+                    <Link to="/explore" className="nav-link">Explore</Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="/map/1">Map</Link>
-                </li>
-                <li className="nav-item">
-                    <Link to="/madlibs">MadLibs</Link>
+                    <Link to="/about" className="nav-link about-link">About Us</Link>
                 </li>
             </ul>
         </div>
@@ -46,8 +44,8 @@ function HamburgerMenu() {
 function HomeLogo() {
     return (
         <a href="/" className="navbar-brand group-name">
-            <img src="https://static.thenounproject.com/png/934183-200.png" alt="magical book logo" className="d-inline-block align-top" />
-            Fairytales
+            <img src="img/ecofriendslogo.png" alt="ecofriends logo" className="d-inline-block align-top"/>
+            Eco Friends
         </a>
     );
 }
@@ -55,7 +53,7 @@ function HomeLogo() {
 export function NavBar() {
     return(
         <div className="container-fluid">
-            <nav className="navbar navbar-expand-md navbar-dark">
+            <nav className="navbar navbar-expand-md">
                 <div className="container-fluid">
                     <HomeLogo />
                     <HamburgerMenu />
