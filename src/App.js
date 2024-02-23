@@ -5,13 +5,17 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
 
-import { HomePage } from './Homepage';
+import { ExplorePage } from './Explorepage';
 import { AboutPage } from './AboutPage';
+import { HomePage } from './Homepage';
 
 function App(props) {
   const [data, setData] = useState([]);
+  const [cardData, setCardData] = useState([]);
   const [alertMessage, setAlertMessage] = useState(null);
   const [isFetching, setIsFetching] = useState(false);
+  const [alertCardMessage, setAlertCardMessage] = useState(null);
+  const [isFetchingCard, setIsFetchingCard] = useState(false);
 
   const fetchData = () => {
     setIsFetching(true);
@@ -30,15 +34,37 @@ function App(props) {
       });
   }
 
+  const fetchCardData = () => {
+    setIsFetchingCard(true);
+    fetch('cards.json')
+      .then(function(response){
+        return response.json();
+      })
+      .then(function(json) {
+        setCardData(json);
+      })
+      .catch((error) => {
+        setAlertCardMessage(error.message);
+      })
+      .then(() => {
+        setIsFetchingCard(false);
+      });
+  }
+
   useEffect(() => {
     fetchData();
+  }, [])
+
+  useEffect(() => {
+    fetchCardData();
   }, [])
   
   return (
     <Routes>
-      <Route index element={<HomePage fairytaleData={data} alertMessage={alertMessage} waiting={isFetching}/>} />
-      <Route path="home" element={<HomePage fairytaleData={data} alertMessage={alertMessage} waiting={isFetching}/>} />
+      <Route index element={<ExplorePage fairytaleData={data} alertMessage={alertMessage} waiting={isFetching}/>} />
+      <Route path="explore" element={<ExplorePage fairytaleData={data} alertMessage={alertMessage} waiting={isFetching}/>} />
       <Route path="about" element={<AboutPage />} />
+      <Route path="home" element={<HomePage cardData={cardData} alertMessage={alertCardMessage} waiting={isFetchingCard}/>} />
       <Route path="*" element={<Navigate to="/home" />} ></Route>
     </Routes>
 
