@@ -61,7 +61,7 @@ function App(props) {
   
   return (
     <Routes>
-      <Route index element={<ExplorePage fairytaleData={data} alertMessage={alertMessage} waiting={isFetching}/>} />
+      <Route index element={<HomePage cardData={cardData} alertMessage={alertCardMessage} waiting={isFetchingCard}/>} />
       <Route path="explore" element={<ExplorePage fairytaleData={data} alertMessage={alertMessage} waiting={isFetching}/>} />
       <Route path="about" element={<AboutPage />} />
       <Route path="home" element={<HomePage cardData={cardData} alertMessage={alertCardMessage} waiting={isFetchingCard}/>} />
