@@ -17,7 +17,7 @@ function CategoryCard(props) {
                         <Button variant="contained" className = "category-button">{props.category.name}</Button>
                         sx={{position: "absolute", top: "50%", textAlign: "center"}}
                     </CardContent> */}
-                    <Button variant="contained" className = "category-button" sx={{position: "absolute", top: "50%", textAlign: "center", left: "50%", backgroundColor: "rgba(255, 204, 204, 0.7)", color: "#800000", fontWeight: "600", borderStyle: "solid", borderWidth: ".1rem", borderColor: "white", height: "5rem", fontSize: "1.5rem", width: "17rem", borderRadius: "10px"}}>{props.category.name}</Button>
+                    <Button variant="contained" className = "category-button" sx={{position: "absolute", top: "50%", textAlign: "center", left: "50%", backgroundColor: "rgba(255, 204, 204, 0.7)", color: "#800000", fontWeight: "600", borderStyle: "solid", borderWidth: ".1rem", borderColor: "white", height: "5rem", fontSize: "1.5rem", width: "17rem", borderRadius: "10px", '&:hover': {backgroundColor: '#fff',}}}>{props.category.name}</Button>
                 </Card>
                 {/* <div className="card mb-2 category-card">
                     <img src={props.category.img} alt={props.category.alt}/>

@@ -154,12 +154,17 @@ input:hover {
 }
 
 .category-button {
-  transform: translate(-50%, -50%)
+  transform: translate(-50%, -50%);
+}
+
+/* .category-button &:hover {
+    background-color: '#fff';
+    color: '#3c52b2';
+} */
   /* position: absolute;
   top: 50%; */
   /* display: block; */
   /* margin: auto;*/
-}
 
 /* Map page mobile css */
 html {
