@@ -2,7 +2,7 @@ import { React,useState } from 'react';
 import Checkbox from '@mui/material/Checkbox';
 import MenuItem from '@mui/material/MenuItem';
 import ListItemText from '@mui/material/ListItemText';
-import { FormControl, InputLabel, Select, SelectChangeEvent } from '@mui/material';
+import { FormControl, InputLabel, Select, SelectChangeEvent, Typography } from '@mui/material';
 
 export default function Filters(props) {
     const callback = props.applyFilterCallback;
@@ -49,18 +49,21 @@ export default function Filters(props) {
     //     return <option key={age} value={age}>{age}</option>
     // })
 
-
+    
 
     return (
         <section className="homepage-filters">
             <div className="container-filters">
                 <FormControl sx={{m: 1, minWidth: 180, '& .MuiSelect-select' : {color: 'white'}, marginRight: '20rem' }}>
                     <InputLabel  htmlFor="continent-selection" shrink={false} sx={{fontWeight: '700'}}>Filter by</InputLabel>
-                    <Select name="continent-selection" id="continent-selection" value={selectedContinent} multiple onChange={handleContinentChange} renderValue={(selected) => ''} className="filter" sx={{color: "white", '.MuiOutlinedInput-notchedOutline': {borderColor: 'white', borderWidth: 'medium'},'&.Mui-focused .MuiOutlinedInput-notchedOutline': {borderColor: 'white', borderWidth: 'medium'},'&:hover .MuiOutlinedInput-notchedOutline': {borderColor: 'white', borderWidth: 'medium'},'.MuiSvgIcon-root ': {fill: "white !important",}}}>
+                    <Select name="continent-selection" id="continent-selection" value={selectedContinent} multiple onChange={handleContinentChange} renderValue={(selected) => ''} MenuProps={{PaperProps: {sx: {backgroundColor: '#F0FFFF', /*'& .MuiList-root': {width: '20rem',},*/ '& .MuiMenuItem-root': {padding: 0,}}}}} className="filter" sx={{color: "white", '.MuiOutlinedInput-notchedOutline': {borderColor: 'white', borderWidth: 'medium'},'&.Mui-focused .MuiOutlinedInput-notchedOutline': {borderColor: 'white', borderWidth: 'medium'},'&:hover .MuiOutlinedInput-notchedOutline': {borderColor: 'white', borderWidth: 'medium'},'.MuiSvgIcon-root ': {fill: "white !important",}}}>
+                        {/* <Typography sx={{width: '9rem', height: '2rem', margin: '.2rem .7rem', backgroundColor: 'rgba(38, 171, 144, 0.28)'}}>
+                            Category
+                        </Typography> */}
                         {props.uniqueContinent.map((continentName) => (
                             <MenuItem key={continentName} value={continentName}>
-                                <Checkbox checked={selectedContinent.indexOf(continentName) > -1} />
-                                <ListItemText primary={continentName} />
+                                <Checkbox sx={{'&.Mui-checked': {color: 'rgba(38, 171, 144, 0.28)'}}} checked={selectedContinent.indexOf(continentName) > -1} />
+                                <ListItemText sx={{color: 'rgba(0, 0, 0, .7)'}} primary={continentName} />
                             </MenuItem>
                         ))}    
                     </Select>
