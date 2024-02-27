@@ -1,3 +1,4 @@
+import { initializeApp } from "firebase/app";
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
@@ -9,6 +10,19 @@ import fairytaleData from './data/fairytales.json';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 import 'whatwg-fetch';
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyBd27rl2LAgd2xQ7bsnYzH-M2CP-dFgRvs",
+  authDomain: "fixer-uppers3.firebaseapp.com",
+  projectId: "fixer-uppers3",
+  storageBucket: "fixer-uppers3.appspot.com",
+  messagingSenderId: "835145866169",
+  appId: "1:835145866169:web:7de7995773388f0aab7468"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
