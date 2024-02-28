@@ -232,10 +232,6 @@ html {
   /* position: relative; */
 }
 
-.category-card {
-
-}
-
 .title {
   text-align: center;
   padding: 2rem;
@@ -287,12 +283,12 @@ html {
     color: black;
   }
 
-  .homepage-content {
+  /* .homepage-content { */
     /* background-image: url('../public/img/homepagebackground.jpg'); */
     /* overflow: hidden;
     background-size: cover;
     background-position: center; */
-  }
+  /* } */
 
   .container-filters {
     padding: 3rem;
