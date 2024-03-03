@@ -5,7 +5,7 @@
         "continent": "Africa", 
         "country": "Morocco",
         "duration": "5", 
-        "img": "./img/1001-nights.jpg", 
+        "img": "./img/tiktokexplorecard.mp4", 
         "alt": "drawing of an Arabic Palace and multiple Persian man and woman within",
         "link": "https://www.storynory.com/the-1001-nights/",
         "location": [31.791702, -7.092620]
@@ -18,7 +18,7 @@
         "country": "United States", 
         "duration":"10", 
         "alt": "drawing of Native American woman and wolf",
-        "img": "./img/wolf.jpg", 
+        "img": "./img/tiktokexplorecard.mp4", 
         "link": "https://fairytalez.com/adventures-wolf-marked/",
         "location": [37.090240, -95.712891]
     },
@@ -30,8 +30,8 @@
         "country": "Australia", 
         "duration": "15", 
         "alt": "fish drawing",
-        "img": "./img/fish.jpg", 
-        "link": "https://fairytalez.com/a-fish-story/",
+        "img": "./img/tiktokexplorecard.mp4", 
+        "link": "./img/tiktokexplorecard.mp4",
         "location": [-25.274399, 133.775131]
     },
 
@@ -42,8 +42,8 @@
         "country": "Ukraine", 
         "duration": "15", 
         "alt": "drawings of deers and women in medivial setting",
-        "img": "./img/golden_slipper.jpg", 
-        "link": "https://fairytalez.com/the-golden-slipper/",
+        "img": "./img/tiktokexplorecard.mp4", 
+        "link": "./img/tiktokexplorecard.mp4",
         "location": [48.379433, 31.165581]
     },
 
@@ -53,9 +53,9 @@
         "continent": "Africa", 
         "country": "Ghana", 
         "duration": "10", 
-        "img": "./img/anansi.jpg", 
+        "img": "./img/tiktokexplorecard.mp4", 
         "alt": "drawing of spider-like man Anasi, a snake, a leopard and a fairy",
-        "link": "https://www.culturesofwestafrica.com/kwaku-anansi-pot-wisdom/",
+        "link": "./img/tiktokexplorecard.mp4",
         "location": [7.9465, 1.0232]
     },
     
@@ -65,9 +65,9 @@
         "continent": "Europe", 
         "country": "Turkey", 
         "duration": "15", 
-        "img": "./img/dede_korkut.jpg", 
+        "img": "./img/tiktokexplorecard.mp4", 
         "alt": "drawing of old man Dede Korkut sitting in a garden",
-        "link": "https://www.storynory.com/dede-korkut-and-the-angel-of-death/",
+        "link": "./img/tiktokexplorecard.mp4",
         "location": [38.9637, 35.2433]
     },
     
@@ -77,9 +77,9 @@
         "continent": "Asia", 
         "country": "Japan", 
         "duration": "5", 
-        "img": "./img/My-Lord-Bag-of-Rice.jpg", 
+        "img": "./img/tiktokexplorecard.mp4", 
         "alt": "drawing of a woman and a man in a Japanese style ilustration",
-        "link": "https://etc.usf.edu/lit2go/72/japanese-fairy-tales/4846/my-lord-bag-of-rice/",
+        "link": "./img/tiktokexplorecard.mp4",
         "location": [36.2048, 138.2529]
     },
     
@@ -90,8 +90,8 @@
         "country": "Brazil", 
         "duration":"5", 
         "alt": "drawing of a Brazilian woman and her child",
-        "img": "./img/springs_princess.jpg", 
-        "link": "https://fairytalez.com/princess-springs/",
+        "img": "./img/tiktokexplorecard.mp4", 
+        "link": "./img/tiktokexplorecard.mp4",
         "location": [-15.793889, -47.882778]
     }
 ]

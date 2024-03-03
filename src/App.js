@@ -19,6 +19,15 @@ function App(props) {
 
   const fetchData = () => {
     setIsFetching(true);
+    // const docRef = doc(db, "videos", "LBwyIEAqptGoN7TNFMq4");
+
+    // const docSnap = await getDoc(docRef);
+    // if (docSnap.exists()) {
+    //   console.log("Document data:", docSnap.data());
+    // } else {
+    //   // docSnap.data() will be undefined in this case
+    //   console.log("No such document!");
+    // }
     fetch('fairytales.json')
       .then(function(response){
         return response.json();
@@ -62,7 +71,7 @@ function App(props) {
   return (
     <Routes>
       <Route index element={<HomePage cardData={cardData} alertMessage={alertCardMessage} waiting={isFetchingCard}/>} />
-      <Route path="explore" element={<ExplorePage fairytaleData={data} alertMessage={alertMessage} waiting={isFetching}/>} />
+      <Route path="explore" element={<ExplorePage videoDatabase={props.videoDatabase} alertMessage={alertMessage} waiting={isFetching}/>} />
       <Route path="about" element={<AboutPage />} />
       <Route path="home" element={<HomePage cardData={cardData} alertMessage={alertCardMessage} waiting={isFetchingCard}/>} />
       <Route path="*" element={<Navigate to="/home" />} ></Route>
