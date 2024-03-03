@@ -1,62 +1,83 @@
-import { React,useState } from 'react';
+import { React,useState, useEffect } from 'react';
+import { collection, query, where, getDocs } from "firebase/firestore";
 import FairytalesList from './Fairytales.js';
-import WelcomeComponent from './Welcome.js';
 import Filters from './Filters.js';
 import { Footer } from './About.js';
 import { NavBar } from './About.js';
 
-
 export function ExplorePage(props) {
+  const [videoData, setVideoData] = useState([]);
+  const [alertMessage, setAlertMessage] = useState(null);
+  const [isFetching, setIsFetching] = useState(true);
+  const [newSelectedCategory, setNewSelectedCategory] = useState([]);
 
-  const [newSelectedContinent, setNewSelectedContinent] = useState([]);
-  const [newSelectedDuration, setNewSelectedDuration] = useState('');
-//   const [newSelectedAge, setNewSelectedAge] = useState('');
+  // const fetchVideoData = () => {
+  //   setIsFetching(true);
+  //   let q = collection(props.videoDatabase, "videos");
+  //   if (Array.isArray(newSelectedCategory) && newSelectedCategory.length) {
+  //     q = query(collection(props.videoDatabase, "videos"), where("categories", "array-contains-any", {newSelectedCategory}));
+  //   }
+  //   getDocs(q)
+  //     .then(function(snapshot) {
+  //       setVideoData(snapshot);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error.message);
+  //       setAlertMessage(error.message);
+  //     })
+  //     .then(() => {
+  //       setIsFetching(false);
+  //     });
+  // }
 
-  let displayedData = props.fairytaleData;
-
-  if (Array.isArray(newSelectedContinent) && newSelectedContinent.length) { //users select a continent
-    displayedData = displayedData.filter((data) => {
-      return newSelectedContinent.includes(data.continent); 
-    })
+  // useEffect(() => {
+  //   fetchVideoData();
+  // }, [])
+  const applyFilter = (categoryArray) => {
+    // const updatedNewSelectedCategory = categoryArray;
+    setNewSelectedCategory(categoryArray)
   }
 
-  if (newSelectedDuration !== "") { //users select a duration
-    displayedData = displayedData.filter((data) => {
-      return data.duration === newSelectedDuration; 
-    })
+  useEffect(() => {
+    setIsFetching(true);
+    let q = collection(props.videoDatabase, "videos");
+    if (Array.isArray(newSelectedCategory) && newSelectedCategory.length > 0) {
+      q = query(collection(props.videoDatabase, "videos"), where("categories", "array-contains-any", newSelectedCategory));
+    }
+    getDocs(q)
+      .then(function(snapshot) {
+        return snapshot.docs;
+      })
+      .then(function(docsArray) {
+        setVideoData(docsArray);
+      })
+      .catch((error) => {
+        console.log(error.message);
+        setAlertMessage(error.message);
+      })
+      .then(() => {
+        setIsFetching(false);
+      })
+  }, [newSelectedCategory])
+
+  const categoryList = ["food", "fashion", "cosmetics", "home", "transportation", "children", "reduce waste", "clean energy"];
+
+  let render;
+
+  if (isFetching) {
+    render = <p>Loading videos...</p>;
+  } else {
+    render = <FairytalesList categoriesQuerySnapshot={videoData}/>;
   }
-
-//   if (newSelectedAge !== "") { //users select an age
-//     displayedData = displayedData.filter((data) => {
-//       return data.age === newSelectedAge; 
-//     })
-//   }
-
-
-  const applyFilter = (continentString, durationString) => {
-    const updatedNewSelectedContinent = continentString;
-    setNewSelectedContinent(updatedNewSelectedContinent)
-
-    const updatedNewSelectedDuration = durationString;
-    setNewSelectedDuration(updatedNewSelectedDuration)
-
-    // const updatedNewSelectedAge = ageString;
-    // setNewSelectedAge(updatedNewSelectedAge)
-    
-  }
-
-  
-  const continentList = [...new Set(props.fairytaleData.map(storyObj => storyObj.continent))].sort();
-  const durationList = [...new Set(props.fairytaleData.map(storyObj => storyObj.duration))];
-//   const ageList = [...new Set(props.fairytaleData.map(storyObj => storyObj.age))];
 
   return (
     <>
       <NavBar />
-      <Filters uniqueContinent={continentList} uniqueDuration={durationList}/*uniqueAge={ageList}*/ applyFilterCallback={applyFilter}/>
-      {props.waiting && <p>Loading fairytales...</p>}
-      {props.alertMessage && <p className="bg-danger text-light p-3 mb-2">Failed to fetch the data. Error: {props.alertMessage}</p>}
-      <FairytalesList fairytaleData={displayedData}/>
+      <Filters uniqueCategory={categoryList} applyFilterCallback={applyFilter}/>
+      {/* {isFetching && <p>Loading videos...</p>}
+      {alertMessage && <p className="bg-danger text-light p-3 mb-2">Failed to fetch the data. Error: {alertMessage}</p>} */}
+      {render}
+      {/* <FairytalesList categoriesQuerySnapshot={videoData}/> */}
       <Footer />
     </>
   );
