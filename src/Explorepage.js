@@ -1,4 +1,5 @@
 import { React,useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { collection, query, where, getDocs } from "firebase/firestore";
 import FairytalesList from './Fairytales.js';
 import Filters from './Filters.js';
@@ -9,7 +10,9 @@ export function ExplorePage(props) {
   const [videoData, setVideoData] = useState([]);
   const [alertMessage, setAlertMessage] = useState(null);
   const [isFetching, setIsFetching] = useState(true);
-  const [newSelectedCategory, setNewSelectedCategory] = useState([]);
+  const [newSelectedCategory, setNewSelectedCategory] = useState([category]);
+
+  let { category } = useParams();
 
   // const fetchVideoData = () => {
   //   setIsFetching(true);
@@ -33,6 +36,10 @@ export function ExplorePage(props) {
   // useEffect(() => {
   //   fetchVideoData();
   // }, [])
+  // const applyParams = (category) => {
+  //   setNewSelectedCategory(category);
+  // }
+
   const applyFilter = (categoryArray) => {
     // const updatedNewSelectedCategory = categoryArray;
     setNewSelectedCategory(categoryArray)
@@ -60,7 +67,7 @@ export function ExplorePage(props) {
       })
   }, [newSelectedCategory])
 
-  const categoryList = ["food", "fashion", "cosmetics", "home", "transportation", "children", "reduce waste", "clean energy"];
+  const categoryList = ["Food", "Fashion", "Cosmetics", "Home", "Transportation", "Children", "Reduce Waste", "Clean Energy"];
 
   let render;
 

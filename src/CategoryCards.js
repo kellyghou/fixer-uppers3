@@ -26,7 +26,7 @@ function CategoryCard(props) {
                 </div>
                 <div>
                     <Card sx={{ maxWidth: "18rem", borderRadius: "20px"}} className='category-card' onMouseLeave={() => setFlip(!flip)}>
-                        <CardActionArea href="/explore">
+                        <CardActionArea href={`/explore/${props.category.name}`}>
                             <CardContent
                             sx={{height: "21rem"}}
                             >
