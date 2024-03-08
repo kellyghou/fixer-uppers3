@@ -3,6 +3,7 @@
         "id": "1", 
         "name": "Food", 
         "img": "./img/foodcard.jpeg", 
+        "description": "Learn how you can become more sustainable within specific ingredients, supermarkets, and food wastage.",
         "alt": "drawing of an Arabic Palace and multiple Persian man and woman within",
         "link": "https://www.storynory.com/the-1001-nights/",
         "location": [31.791702, -7.092620]
@@ -11,6 +12,7 @@
     {
         "id": "2", 
         "name": "Fashion", 
+        "description": "Learn about sustainable materials, fashion industry practices, and how to read clothing tags for long-lasting fashion articles that look good on you and the planet.",
         "continent": "North America", 
         "country": "United States", 
         "duration":"10", 
@@ -23,6 +25,7 @@
     {
         "id": "3", 
         "name": "Home", 
+        "description": "Learn about affordable sustainable materials, the most efficient way to maximize energy usage and buying long lasting products for your home.",
         "continent": "Australia", 
         "country": "Australia", 
         "duration": "15", 
@@ -35,6 +38,7 @@
     {
         "id": "4", 
         "name": "Transportation", 
+        "description": "Learn about eco-friendly transportation options such as public transportation, electric vehicles, biking, and carpooling to minimize your carbon footprint.",
         "continent": "Europe", 
         "country": "Ukraine", 
         "duration": "15", 
@@ -47,6 +51,7 @@
     {
         "id": "5", 
         "name": "Cosmetics", 
+        "description": "Learn more about more sustainable brands that use the best minerals and ingredients for the environment!",
         "continent": "Africa", 
         "country": "Ghana", 
         "duration": "10", 
@@ -59,6 +64,7 @@
     {
         "id": "6", 
         "name": "Reduce Waste", 
+        "description": "Learn how you can reduce waste in your daily life and spendings to be more sustainable for the environment, and maybe save a few bucks too.",
         "continent": "Gardening and Farming", 
         "country": "Turkey", 
         "duration": "15", 
@@ -71,6 +77,7 @@
     {
         "id": "7", 
         "name": "Clean Energy", 
+        "description": "Learn about the different types of clean energy and how they create electricity without burning fossil fuels.",
         "continent": "Asia", 
         "country": "Japan", 
         "duration": "5", 
@@ -82,12 +89,13 @@
     
     {
         "id": "8", 
-        "name": "Children", 
+        "name": "Pets", 
+        "description": "Learn about the most sustainable foods and best grooming equipment you can find for your pets. The cutest pet accessories may not be more than a mile away!",
         "continent": "South America", 
         "country": "Brazil", 
         "duration":"5", 
         "alt": "drawing of a Brazilian woman and her child",
-        "img": "./img/springs_princess.jpg", 
+        "img": "./img/petscard.jpg", 
         "link": "https://fairytalez.com/princess-springs/",
         "location": [-15.793889, -47.882778]
     }

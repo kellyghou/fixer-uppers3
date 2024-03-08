@@ -31,7 +31,7 @@ function CategoryCard(props) {
                             sx={{height: "21rem"}}
                             >
                                 <Typography>
-                                    Some text
+                                    {props.category.description}
                                 </Typography>
                             </CardContent>
                         </CardActionArea>

@@ -60,7 +60,7 @@ export function ExplorePage(props) {
       })
   }, [newSelectedCategory])
 
-  const categoryList = ["food", "fashion", "cosmetics", "home", "transportation", "children", "reduce waste", "clean energy"];
+  const categoryList = ["food", "fashion", "cosmetics", "home", "transportation", "pets", "reduce waste", "clean energy"];
 
   let render;
 
