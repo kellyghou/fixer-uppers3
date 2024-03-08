@@ -10,7 +10,7 @@ import { AboutPage } from './AboutPage';
 import { HomePage } from './Homepage';
 
 function App(props) {
-  const [data, setData] = useState([]);
+  // const [categoryParam, setCategoryParam] = useState([]);
   const [cardData, setCardData] = useState([]);
   const [alertMessage, setAlertMessage] = useState(null);
   const [isFetching, setIsFetching] = useState(false);
@@ -37,14 +37,19 @@ function App(props) {
   useEffect(() => {
     fetchCardData();
   }, [])
+
+  // const applyParam = (param) => {
+  //   setCategoryParam(param);
+  //   location.href='explore';
+  // }
   
   return (
     <Routes>
       <Route index element={<HomePage cardData={cardData} alertMessage={alertCardMessage} waiting={isFetchingCard}/>} />
-      <Route path="explore/:category?" element={<ExplorePage videoDatabase={props.videoDatabase} alertMessage={alertMessage} waiting={isFetching}/>} />
+      <Route exact path="explore/:param1?/:param2?/:param3?/:param4?/:param5?/:param6?/:param7?/:param8?/:param9?/:param10?" element={<ExplorePage videoDatabase={props.videoDatabase} alertMessage={alertMessage} waiting={isFetching}/>} />
       <Route path="about" element={<AboutPage />} />
       <Route path="home" element={<HomePage cardData={cardData} alertMessage={alertCardMessage} waiting={isFetchingCard}/>} />
-      <Route path="*" element={<Navigate to="/home" />} ></Route>
+      {/* <Route path="*" element={<Navigate to="/home" />} ></Route> */}
     </Routes>
 
     // <div className="App">

@@ -6,19 +6,27 @@ import { FormControl, InputLabel, Select, SelectChangeEvent, Typography } from '
 
 export default function Filters(props) {
     // {console.log("entered filters")}
+    const categoryParams = props.categoryParams;
+
+    
+    // url.searchParams.set('step', '...');
+
     const callback = props.applyFilterCallback;
-    const [selectedCategory, setSelectedCategory] = useState([]);
+    const [selectedCategory, setSelectedCategory] = useState(categoryParams != null ? [categoryParams] : []);
     // const [selectedDuration, setSelectedDuration] = useState('');
     // const [selectedAge, setSelectedAge] = useState('');
 
     const handleCategoryChange = (event) => {
         // const updatedSelectedContinent = event.target.value;
+        console.log("handled change");
         const {
             target: { value },
         } = event;
         setSelectedCategory(
             typeof value === 'string' ? value.split(',') : value,
         );
+        // const paramCounter = 1;
+
         // if (Array.isArray(selectedCategory) && selectedCategory.length) {
         //     setSelectedCategory(
         //         // typeof value === 'string' ? value.split(',') : value,
@@ -38,7 +46,13 @@ export default function Filters(props) {
     // }
 
     const applyCallback = (event) => {
+        console.log("applied callback");
         event.preventDefault();
+        // selectedCategory.forEach((checkedCategory) => {
+        //     urlParams.set(`param${paramCounter}`, checkedCategory);
+        //     paramCounter++;
+        // });
+        console.log(selectedCategory);
         callback(selectedCategory /*selectedDuration selectedAge*/)
     }
 

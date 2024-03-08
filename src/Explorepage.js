@@ -10,9 +10,13 @@ export function ExplorePage(props) {
   const [videoData, setVideoData] = useState([]);
   const [alertMessage, setAlertMessage] = useState(null);
   const [isFetching, setIsFetching] = useState(true);
-  const [newSelectedCategory, setNewSelectedCategory] = useState([category]);
+  
 
-  let { category } = useParams();
+  let { categoryParams } = useParams();
+
+  console.log(categoryParams);
+
+  const [newSelectedCategory, setNewSelectedCategory] = useState([categoryParams]);
 
   // const fetchVideoData = () => {
   //   setIsFetching(true);
@@ -42,13 +46,29 @@ export function ExplorePage(props) {
 
   const applyFilter = (categoryArray) => {
     // const updatedNewSelectedCategory = categoryArray;
-    setNewSelectedCategory(categoryArray)
+    console.log("applied filter");
+    console.log(categoryArray);
+    setNewSelectedCategory(categoryArray);
+    console.log(newSelectedCategory);
+    const url = new URL("https://fixer-uppers3.web.app/explore")
+    const urlParams = new URLSearchParams(url.search);
+    let paramCounter = 1;
+    newSelectedCategory.forEach((checkedCategory) => {
+      console.log(checkedCategory);
+      urlParams.set(`param${paramCounter}`, checkedCategory);
+      paramCounter++;
+    });
+    console.log(urlParams.toString());
+    window.history.pushState(null, null, "?"+urlParams.toString());
   }
+
 
   useEffect(() => {
     setIsFetching(true);
+    console.log(newSelectedCategory);
+    console.log(categoryParams);
     let q = collection(props.videoDatabase, "videos");
-    if (Array.isArray(newSelectedCategory) && newSelectedCategory.length > 0) {
+    if (Array.isArray(newSelectedCategory) && categoryParams != null && newSelectedCategory.length > 0) {
       q = query(collection(props.videoDatabase, "videos"), where("categories", "array-contains-any", newSelectedCategory));
     }
     getDocs(q)
