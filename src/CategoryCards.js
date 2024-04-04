@@ -7,6 +7,7 @@ import { useState } from 'react';
 
 function CategoryCard(props) {  
     const [flip, setFlip] = useState(false);
+
     return (
         
         <div className="col-12 col-lg-3 category-card-wrapper">
@@ -26,11 +27,11 @@ function CategoryCard(props) {
                 </div>
                 <div>
                     <Card sx={{ maxWidth: "18rem", borderRadius: "20px"}} className='category-card' onMouseLeave={() => setFlip(!flip)}>
-                        <CardActionArea href="/explore">
+                        <CardActionArea href={'explore'}>
                             <CardContent
                             sx={{height: "21rem"}}
                             >
-                                <Typography>
+                                <Typography sx={{fontSize: "1.5rem", textAlign: "center"}}>
                                     {props.category.description}
                                 </Typography>
                             </CardContent>

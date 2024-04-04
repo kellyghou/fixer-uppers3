@@ -9,6 +9,8 @@ export function ExplorePage(props) {
   const [videoData, setVideoData] = useState([]);
   const [alertMessage, setAlertMessage] = useState(null);
   const [isFetching, setIsFetching] = useState(true);
+  
+
   const [newSelectedCategory, setNewSelectedCategory] = useState([]);
 
   // const fetchVideoData = () => {
@@ -33,13 +35,21 @@ export function ExplorePage(props) {
   // useEffect(() => {
   //   fetchVideoData();
   // }, [])
+  // const applyParams = (category) => {
+  //   setNewSelectedCategory(category);
+  // }
+
   const applyFilter = (categoryArray) => {
     // const updatedNewSelectedCategory = categoryArray;
-    setNewSelectedCategory(categoryArray)
+    console.log("applied filter");
+    console.log(categoryArray);
+    setNewSelectedCategory(categoryArray);
   }
+
 
   useEffect(() => {
     setIsFetching(true);
+    console.log(newSelectedCategory);
     let q = collection(props.videoDatabase, "videos");
     if (Array.isArray(newSelectedCategory) && newSelectedCategory.length > 0) {
       q = query(collection(props.videoDatabase, "videos"), where("categories", "array-contains-any", newSelectedCategory));
@@ -60,7 +70,8 @@ export function ExplorePage(props) {
       })
   }, [newSelectedCategory])
 
-  const categoryList = ["food", "fashion", "cosmetics", "home", "transportation", "pets", "reduce waste", "clean energy"];
+  const categoryList = ["Food", "Fashion", "Cosmetics", "Home", "Transportation", "Pets", "Reduce Waste", "Clean Energy"];
+
 
   let render;
 

@@ -10,38 +10,11 @@ import { AboutPage } from './AboutPage';
 import { HomePage } from './Homepage';
 
 function App(props) {
-  const [data, setData] = useState([]);
   const [cardData, setCardData] = useState([]);
   const [alertMessage, setAlertMessage] = useState(null);
   const [isFetching, setIsFetching] = useState(false);
   const [alertCardMessage, setAlertCardMessage] = useState(null);
   const [isFetchingCard, setIsFetchingCard] = useState(false);
-
-  const fetchData = () => {
-    setIsFetching(true);
-    // const docRef = doc(db, "videos", "LBwyIEAqptGoN7TNFMq4");
-
-    // const docSnap = await getDoc(docRef);
-    // if (docSnap.exists()) {
-    //   console.log("Document data:", docSnap.data());
-    // } else {
-    //   // docSnap.data() will be undefined in this case
-    //   console.log("No such document!");
-    // }
-    fetch('fairytales.json')
-      .then(function(response){
-        return response.json();
-      })
-      .then(function(json) {
-        setData(json);
-      })
-      .catch((error) => {
-        setAlertMessage(error.message);
-      })
-      .then(() => {
-        setIsFetching(false);
-      });
-  }
 
   const fetchCardData = () => {
     setIsFetchingCard(true);
@@ -61,17 +34,14 @@ function App(props) {
   }
 
   useEffect(() => {
-    fetchData();
-  }, [])
-
-  useEffect(() => {
     fetchCardData();
   }, [])
+
   
   return (
     <Routes>
       <Route index element={<HomePage cardData={cardData} alertMessage={alertCardMessage} waiting={isFetchingCard}/>} />
-      <Route path="explore" element={<ExplorePage videoDatabase={props.videoDatabase} alertMessage={alertMessage} waiting={isFetching}/>} />
+      <Route exact path="explore" element={<ExplorePage videoDatabase={props.videoDatabase} alertMessage={alertMessage} waiting={isFetching}/>} />
       <Route path="about" element={<AboutPage />} />
       <Route path="home" element={<HomePage cardData={cardData} alertMessage={alertCardMessage} waiting={isFetchingCard}/>} />
       <Route path="*" element={<Navigate to="/home" />} ></Route>

@@ -18,7 +18,7 @@ export function HomePage(props) {
                         <p class='homepage-subtitle'>Learn how you can incorporate sustainable habits in your daily life to support and save our environment.</p>
                     </div>
                 </div>
-                <Button variant='contained' href='/explore' sx={{display: 'block', margin: 'auto', width: '10rem', textAlign: 'center', marginBottom: '2rem', marginTop: '2rem'}}>Get Started</Button>
+                <Button variant='contained' href='explore' sx={{display: 'block', margin: 'auto', width: '10rem', textAlign: 'center', marginBottom: '2rem', marginTop: '2rem'}}>Get Started</Button>
                 <span class='homepage-welcome-learnmore'>Learn more about what you can do</span>
                 {props.waiting && <p>Loading cards...</p>}
                 {props.alertMessage && <p className="bg-danger text-light p-3 mb-2">Failed to fetch the data. Error: {props.alertMessage}</p>}
