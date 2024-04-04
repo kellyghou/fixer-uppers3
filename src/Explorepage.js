@@ -1,5 +1,4 @@
 import { React,useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import { collection, query, where, getDocs } from "firebase/firestore";
 import FairytalesList from './Fairytales.js';
 import Filters from './Filters.js';
@@ -12,11 +11,7 @@ export function ExplorePage(props) {
   const [isFetching, setIsFetching] = useState(true);
   
 
-  let { categoryParams } = useParams();
-
-  console.log(categoryParams);
-
-  const [newSelectedCategory, setNewSelectedCategory] = useState([categoryParams]);
+  const [newSelectedCategory, setNewSelectedCategory] = useState([]);
 
   // const fetchVideoData = () => {
   //   setIsFetching(true);
@@ -49,26 +44,14 @@ export function ExplorePage(props) {
     console.log("applied filter");
     console.log(categoryArray);
     setNewSelectedCategory(categoryArray);
-    console.log(newSelectedCategory);
-    const url = new URL("https://fixer-uppers3.web.app/explore")
-    const urlParams = new URLSearchParams(url.search);
-    let paramCounter = 1;
-    newSelectedCategory.forEach((checkedCategory) => {
-      console.log(checkedCategory);
-      urlParams.set(`param${paramCounter}`, checkedCategory);
-      paramCounter++;
-    });
-    console.log(urlParams.toString());
-    window.history.pushState(null, null, "?"+urlParams.toString());
   }
 
 
   useEffect(() => {
     setIsFetching(true);
     console.log(newSelectedCategory);
-    console.log(categoryParams);
     let q = collection(props.videoDatabase, "videos");
-    if (Array.isArray(newSelectedCategory) && categoryParams != null && newSelectedCategory.length > 0) {
+    if (Array.isArray(newSelectedCategory) && newSelectedCategory.length > 0) {
       q = query(collection(props.videoDatabase, "videos"), where("categories", "array-contains-any", newSelectedCategory));
     }
     getDocs(q)
@@ -87,7 +70,8 @@ export function ExplorePage(props) {
       })
   }, [newSelectedCategory])
 
-  const categoryList = ["Food", "Fashion", "Cosmetics", "Home", "Transportation", "Children", "Reduce Waste", "Clean Energy"];
+  const categoryList = ["Food", "Fashion", "Cosmetics", "Home", "Transportation", "Pets", "Reduce Waste", "Clean Energy"];
+
 
   let render;
 

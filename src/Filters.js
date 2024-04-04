@@ -6,13 +6,12 @@ import { FormControl, InputLabel, Select, SelectChangeEvent, Typography } from '
 
 export default function Filters(props) {
     // {console.log("entered filters")}
-    const categoryParams = props.categoryParams;
 
     
     // url.searchParams.set('step', '...');
 
     const callback = props.applyFilterCallback;
-    const [selectedCategory, setSelectedCategory] = useState(categoryParams != null ? [categoryParams] : []);
+    const [selectedCategory, setSelectedCategory] = useState([]);
     // const [selectedDuration, setSelectedDuration] = useState('');
     // const [selectedAge, setSelectedAge] = useState('');
 

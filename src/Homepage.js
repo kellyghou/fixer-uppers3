@@ -22,7 +22,7 @@ export function HomePage(props) {
                 <span class='homepage-welcome-learnmore'>Learn more about what you can do</span>
                 {props.waiting && <p>Loading cards...</p>}
                 {props.alertMessage && <p className="bg-danger text-light p-3 mb-2">Failed to fetch the data. Error: {props.alertMessage}</p>}
-                <CategoriesList callbackParam={props.callbackParam} cardData={props.cardData}/>
+                <CategoriesList cardData={props.cardData}/>
             </main>
             <Footer />
         </div>

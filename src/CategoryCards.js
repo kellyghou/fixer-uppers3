@@ -8,12 +8,6 @@ import { useState } from 'react';
 function CategoryCard(props) {  
     const [flip, setFlip] = useState(false);
 
-    const callback = props.callbackParam
-
-    const applyCallbackParam = (event, categoryParam) => {
-        event.preventDefault();
-        callback(categoryParam);
-    }
     return (
         
         <div className="col-12 col-lg-3 category-card-wrapper">
@@ -33,12 +27,12 @@ function CategoryCard(props) {
                 </div>
                 <div>
                     <Card sx={{ maxWidth: "18rem", borderRadius: "20px"}} className='category-card' onMouseLeave={() => setFlip(!flip)}>
-                        <CardActionArea href={`explore/param1=${props.category.name}`}>
+                        <CardActionArea href={'explore'}>
                             <CardContent
                             sx={{height: "21rem"}}
                             >
-                                <Typography>
-                                    Some text
+                                <Typography sx={{fontSize: "1.5rem", textAlign: "center"}}>
+                                    {props.category.description}
                                 </Typography>
                             </CardContent>
                         </CardActionArea>
@@ -74,7 +68,7 @@ function CategoryCard(props) {
 export default function CategoriesList(props) {
    
     const categoryCards = props.cardData.map((category) => {
-        return (<CategoryCard callbackParam={props.callbackParam} key={category.id} category={category}/>);
+        return (<CategoryCard key={category.id} category={category}/>);
     })
 
     return (
