@@ -15,6 +15,7 @@ function App(props) {
   const [isFetching, setIsFetching] = useState(false);
   const [alertCardMessage, setAlertCardMessage] = useState(null);
   const [isFetchingCard, setIsFetchingCard] = useState(false);
+  const [homepageCategory, setHomepageCategory] = useState([]);
 
   const fetchCardData = () => {
     setIsFetchingCard(true);
@@ -36,16 +37,16 @@ function App(props) {
   useEffect(() => {
     fetchCardData();
   }, [])
-
   
   return (
     <Routes>
       <Route index element={<HomePage cardData={cardData} alertMessage={alertCardMessage} waiting={isFetchingCard}/>} />
-      <Route exact path="explore" element={<ExplorePage videoDatabase={props.videoDatabase} alertMessage={alertMessage} waiting={isFetching}/>} />
+      <Route exact path="explore" element={<ExplorePage homepageCategory={homepageCategory} videoDatabase={props.videoDatabase} alertMessage={alertMessage} waiting={isFetching}/>} />
       <Route path="about" element={<AboutPage />} />
-      <Route path="home" element={<HomePage cardData={cardData} alertMessage={alertCardMessage} waiting={isFetchingCard}/>} />
+      <Route path="home" element={<HomePage setHomepageCategory={setHomepageCategory} cardData={cardData} alertMessage={alertCardMessage} waiting={isFetchingCard}/>} />
       <Route path="*" element={<Navigate to="/home" />} ></Route>
     </Routes>
+
 
     // <div className="App">
     //   <header className="App-header">

@@ -17,7 +17,6 @@ export default function Filters(props) {
 
     const handleCategoryChange = (event) => {
         // const updatedSelectedContinent = event.target.value;
-        console.log("handled change");
         const {
             target: { value },
         } = event;
@@ -45,13 +44,11 @@ export default function Filters(props) {
     // }
 
     const applyCallback = (event) => {
-        console.log("applied callback");
         event.preventDefault();
         // selectedCategory.forEach((checkedCategory) => {
         //     urlParams.set(`param${paramCounter}`, checkedCategory);
         //     paramCounter++;
         // });
-        console.log(selectedCategory);
         callback(selectedCategory /*selectedDuration selectedAge*/)
     }
 

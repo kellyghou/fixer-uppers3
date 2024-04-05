@@ -4,9 +4,18 @@ import {positions} from '@mui/system';
 import ReactCardFlip from 'react-card-flip';
 import ReactCardFlipper from 'react-card-flipper';
 import { useState } from 'react';
+import { Link as RouterLink} from 'react-router-dom';
 
 function CategoryCard(props) {  
     const [flip, setFlip] = useState(false);
+
+    const setHomepageCategory = props.setHomepageCategory;
+
+    const applyCallback = (event) => {
+        event.preventDefault();
+        
+        // setHomepageCategory([props.category.name]);
+    }
 
     return (
         
@@ -27,13 +36,16 @@ function CategoryCard(props) {
                 </div>
                 <div>
                     <Card sx={{ maxWidth: "18rem", borderRadius: "20px"}} className='category-card' onMouseLeave={() => setFlip(!flip)}>
-                        <CardActionArea href={'explore'}>
+                        <CardActionArea component={RouterLink} to={`/explore`} state={{ category: props.category.name }}>
                             <CardContent
                             sx={{height: "21rem"}}
                             >
                                 <Typography sx={{fontSize: "1.5rem", textAlign: "center"}}>
                                     {props.category.description}
                                 </Typography>
+                                {/* <Link to={`/explore`} state={{ category: props.category.name }}> */}
+                                    {/* {props.category.description} */}
+                                {/* </Link> */}
                             </CardContent>
                         </CardActionArea>
                     </Card>
@@ -66,9 +78,10 @@ function CategoryCard(props) {
 }
 
 export default function CategoriesList(props) {
-   
+    const setHomepageCategory = props.setHomepageCategory;
+
     const categoryCards = props.cardData.map((category) => {
-        return (<CategoryCard key={category.id} category={category}/>);
+        return (<CategoryCard key={category.id} category={category} setHomepageCategory={setHomepageCategory}/>);
     })
 
     return (

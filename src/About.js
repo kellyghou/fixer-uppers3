@@ -7,9 +7,9 @@ export function Footer() {
     return (
         <footer>
             <div className="container">
-                <p><span className="material-icons">email:</span> projectfairytales@uw.edu</p>
-                <p>&copy; Project Fairytales 2022</p>
-                <p>&copy; Emily Yu, Hatice Ece Oz, Kelly Hou, Shrilekha Bhat (INFO340A Group B2)</p>
+                <p><span className="material-icons">email:</span> ecofriends@uw.edu</p>
+                <p>&copy; EcoFriends 2024</p>
+                <p>&copy; Harshita, Ryu, Kelly, Duyen, Kassidy</p>
             </div>
         </footer>
     );

@@ -4,14 +4,23 @@ import FairytalesList from './Fairytales.js';
 import Filters from './Filters.js';
 import { Footer } from './About.js';
 import { NavBar } from './About.js';
+import { useLocation } from 'react-router-dom';
 
 export function ExplorePage(props) {
+  
   const [videoData, setVideoData] = useState([]);
   const [alertMessage, setAlertMessage] = useState(null);
   const [isFetching, setIsFetching] = useState(true);
-  
+  const location = useLocation();
+  let homepageCategory = null;
+  if (location.state != null) {
+    const { category } = location.state;
+    homepageCategory = category;
+  }
+  // const homepageCategory = props.homepageCategory;
+  const [newSelectedCategory, setNewSelectedCategory] = useState(homepageCategory != null ? [homepageCategory] : []);
 
-  const [newSelectedCategory, setNewSelectedCategory] = useState([]);
+  
 
   // const fetchVideoData = () => {
   //   setIsFetching(true);
@@ -41,16 +50,15 @@ export function ExplorePage(props) {
 
   const applyFilter = (categoryArray) => {
     // const updatedNewSelectedCategory = categoryArray;
-    console.log("applied filter");
-    console.log(categoryArray);
     setNewSelectedCategory(categoryArray);
   }
 
 
   useEffect(() => {
     setIsFetching(true);
-    console.log(newSelectedCategory);
     let q = collection(props.videoDatabase, "videos");
+    console.log(newSelectedCategory);
+    console.log(homepageCategory);
     if (Array.isArray(newSelectedCategory) && newSelectedCategory.length > 0) {
       q = query(collection(props.videoDatabase, "videos"), where("categories", "array-contains-any", newSelectedCategory));
     }
@@ -62,7 +70,6 @@ export function ExplorePage(props) {
         setVideoData(docsArray);
       })
       .catch((error) => {
-        console.log(error.message);
         setAlertMessage(error.message);
       })
       .then(() => {
