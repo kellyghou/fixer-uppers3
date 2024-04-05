@@ -1,10 +1,7 @@
 import { initializeApp } from "firebase/app";
-import firebase from "firebase/compat/app";
 // Required for side-effects
 import "firebase/firestore";
 import { getFirestore } from "firebase/firestore";
-import { doc, getDocs, collection, setDoc } from "firebase/firestore";
-import { getStorage, ref } from "firebase/storage";
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';

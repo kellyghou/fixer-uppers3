@@ -75,6 +75,7 @@ export function ExplorePage(props) {
       .then(() => {
         setIsFetching(false);
       })
+      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [newSelectedCategory])
 
   const categoryList = ["Food", "Fashion", "Cosmetics", "Home", "Transportation", "Pets", "Reduce Waste", "Clean Energy"];
@@ -84,6 +85,7 @@ export function ExplorePage(props) {
 
   if (isFetching) {
     render = <p>Loading videos...</p>;
+    {alertMessage && <p className="bg-danger text-light p-3 mb-2">Failed to fetch the data. Error: {alertMessage}</p>}
   } else {
     render = <FairytalesList categoriesQuerySnapshot={videoData}/>;
   }

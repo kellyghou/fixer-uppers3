@@ -2,7 +2,6 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
-import logo from './logo.svg';
 import './App.css';
 
 import { ExplorePage } from './Explorepage';
@@ -11,8 +10,6 @@ import { HomePage } from './Homepage';
 
 function App(props) {
   const [cardData, setCardData] = useState([]);
-  const [alertMessage, setAlertMessage] = useState(null);
-  const [isFetching, setIsFetching] = useState(false);
   const [alertCardMessage, setAlertCardMessage] = useState(null);
   const [isFetchingCard, setIsFetchingCard] = useState(false);
   const [homepageCategory, setHomepageCategory] = useState([]);
@@ -41,7 +38,7 @@ function App(props) {
   return (
     <Routes>
       <Route index element={<HomePage cardData={cardData} alertMessage={alertCardMessage} waiting={isFetchingCard}/>} />
-      <Route exact path="explore" element={<ExplorePage homepageCategory={homepageCategory} videoDatabase={props.videoDatabase} alertMessage={alertMessage} waiting={isFetching}/>} />
+      <Route exact path="explore" element={<ExplorePage homepageCategory={homepageCategory} videoDatabase={props.videoDatabase}/>} />
       <Route path="about" element={<AboutPage />} />
       <Route path="home" element={<HomePage setHomepageCategory={setHomepageCategory} cardData={cardData} alertMessage={alertCardMessage} waiting={isFetchingCard}/>} />
       <Route path="*" element={<Navigate to="/home" />} ></Route>

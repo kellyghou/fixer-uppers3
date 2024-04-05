@@ -1,8 +1,8 @@
-import { Card, CardMedia, CardContent, Typography, CardActionArea, Modal, Box, Collapse, IconButton, CardActions} from '@mui/material';
+import { Card, CardMedia, CardContent, Typography, CardActionArea, Modal, Box, IconButton} from '@mui/material';
 import { styled } from '@mui/material/styles';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+// import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import React from 'react';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 
 function FairyCard(props) {  
     // const [playing, setPlaying] = useState(false);

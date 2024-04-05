@@ -2,7 +2,7 @@ import { React,useState } from 'react';
 import Checkbox from '@mui/material/Checkbox';
 import MenuItem from '@mui/material/MenuItem';
 import ListItemText from '@mui/material/ListItemText';
-import { FormControl, InputLabel, Select, SelectChangeEvent, Typography } from '@mui/material';
+import { FormControl, InputLabel, Select } from '@mui/material';
 
 export default function Filters(props) {
     // {console.log("entered filters")}

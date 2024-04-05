@@ -2,9 +2,7 @@ import React from 'react';
 import { Footer } from './About.js';
 import { NavBar } from './About.js';
 import CategoriesList from './CategoryCards.js';
-import { useState } from 'react';
 import { Button } from '@mui/material';
-import { blockStatement } from '@babel/types';
 
 
 
@@ -16,7 +14,7 @@ export function HomePage(props) {
             <NavBar />
             <main className='homepage-content'>
                 <div class='homepage-welcome-container'>
-                    <img src='./img/waterfallhomepage.png' class='homepage-waterfall-image'/>
+                    <img src='./img/waterfallhomepage.png' class='homepage-waterfall-image' alt='waterfall'/>
                     <div class='homepage-welcome-text-container'>
                         <h1 class='homepage-title'><b>Protect our planet everyday</b></h1>
                         <p class='homepage-subtitle'>Learn how you can incorporate sustainable habits in your daily life to support and save our environment.</p>

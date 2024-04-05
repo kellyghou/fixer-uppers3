@@ -1,7 +1,5 @@
 import React from 'react';
 import { Button, Card, CardMedia, CardContent, Typography, CardActionArea } from '@mui/material';
-import {positions} from '@mui/system';
-import ReactCardFlip from 'react-card-flip';
 import ReactCardFlipper from 'react-card-flipper';
 import { useState } from 'react';
 import { Link as RouterLink} from 'react-router-dom';
