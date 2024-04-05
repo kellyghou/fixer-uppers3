@@ -11,7 +11,8 @@ export default function Filters(props) {
     // url.searchParams.set('step', '...');
 
     const callback = props.applyFilterCallback;
-    const [selectedCategory, setSelectedCategory] = useState([]);
+    const homepageCategory = props.homepageCategory; 
+    const [selectedCategory, setSelectedCategory] = useState(homepageCategory != null ? [homepageCategory] : []);
     // const [selectedDuration, setSelectedDuration] = useState('');
     // const [selectedAge, setSelectedAge] = useState('');
 

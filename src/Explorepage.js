@@ -91,7 +91,7 @@ export function ExplorePage(props) {
   return (
     <>
       <NavBar />
-      <Filters uniqueCategory={categoryList} applyFilterCallback={applyFilter}/>
+      <Filters uniqueCategory={categoryList} applyFilterCallback={applyFilter} homepageCategory={homepageCategory}/>
       {/* {isFetching && <p>Loading videos...</p>}
       {alertMessage && <p className="bg-danger text-light p-3 mb-2">Failed to fetch the data. Error: {alertMessage}</p>} */}
       {render}
