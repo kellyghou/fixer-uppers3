@@ -7,13 +7,6 @@ import { Link as RouterLink} from 'react-router-dom';
 function CategoryCard(props) {  
     const [flip, setFlip] = useState(false);
 
-    const setHomepageCategory = props.setHomepageCategory;
-
-    const applyCallback = (event) => {
-        event.preventDefault();
-        
-        // setHomepageCategory([props.category.name]);
-    }
 
     return (
         

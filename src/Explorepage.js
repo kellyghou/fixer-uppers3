@@ -84,8 +84,12 @@ export function ExplorePage(props) {
   let render;
 
   if (isFetching) {
-    render = <p>Loading videos...</p>;
-    {alertMessage && <p className="bg-danger text-light p-3 mb-2">Failed to fetch the data. Error: {alertMessage}</p>}
+    render = (
+      <>
+        <p>Loading videos...</p>
+        {alertMessage && <p className="bg-danger text-light p-3 mb-2">Failed to fetch the data. Error: {alertMessage}</p>}
+      </>
+    );
   } else {
     render = <FairytalesList categoriesQuerySnapshot={videoData}/>;
   }

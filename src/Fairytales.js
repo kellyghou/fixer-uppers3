@@ -33,22 +33,22 @@ function FairyCard(props) {
         // p: 4,
       };
 
-      const ExpandMore = styled((props) => {
-        const { expand, ...other } = props;
-        return <IconButton {...other} />;
-      })(({ theme, expand }) => ({
-        transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-        marginLeft: 'auto',
-        transition: theme.transitions.create('transform', {
-          duration: theme.transitions.duration.shortest,
-        }),
-      }));
+    //   const ExpandMore = styled((props) => {
+    //     const { expand, ...other } = props;
+    //     return <IconButton {...other} />;
+    //   })(({ theme, expand }) => ({
+    //     transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
+    //     marginLeft: 'auto',
+    //     transition: theme.transitions.create('transform', {
+    //       duration: theme.transitions.duration.shortest,
+    //     }),
+    //   }));
     
-    const [expanded, setExpanded] = useState(false);
+    // const [expanded, setExpanded] = useState(false);
     
-    const handleExpandClick = () => {
-        setExpanded(!expanded);
-    };
+    // const handleExpandClick = () => {
+    //     setExpanded(!expanded);
+    // };
 
     return (
             <div className="col-12 col-lg-3 video-card-wrapper">
