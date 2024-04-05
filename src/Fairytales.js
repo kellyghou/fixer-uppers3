@@ -1,4 +1,4 @@
-import { Card, CardMedia, CardContent, Typography, CardActionArea, Modal, Box} from '@mui/material';
+import { Card, CardMedia, CardContent, Typography, CardActionArea, Modal} from '@mui/material';
 // import { styled } from '@mui/material/styles';
 // import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import React from 'react';
