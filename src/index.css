@@ -242,6 +242,10 @@ html {
   height: 350px;
 }
 
+.playbutton-image {
+  max-width: 3rem
+}
+
 /* mobile view */
 
 @media (min-width: 600px) {

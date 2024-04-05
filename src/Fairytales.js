@@ -3,6 +3,7 @@ import { Card, CardMedia, CardContent, Typography, CardActionArea, Modal, Box} f
 // import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import React from 'react';
 import { useState } from 'react';
+import PlayCircleTwoToneIcon from '@mui/icons-material/PlayCircleTwoTone';
 
 function FairyCard(props) {  
     // const [playing, setPlaying] = useState(false);
@@ -52,10 +53,10 @@ function FairyCard(props) {
 
     return (
             <div className="col-12 col-lg-3 video-card-wrapper">
-                <Card sx={{ width: "18rem", height: "28rem"}}>
-                    <CardActionArea onClick={handleOpen} sx={{zIndex: 1, position: 'relative', backgroundColor: "black"}}>
-                            <CardMedia component='video' src={props.data.location} sx={{position: 'relative', zIndex: 2, height: "21rem"}}/>
-                            <Box component='image' src='./img/playbutton.png' sx={{maxWidth: "3rem", position: "absolute", zIndex: 3, top: "50%", left: "50%", transform: "translate(-50%, -50%)"}}/>
+                <Card sx={{ width: "18rem", height: "28rem", position: 'relative'}}>
+                    <CardActionArea onClick={handleOpen} sx={{backgroundColor: "black"}}>
+                        <CardMedia component='video' src={props.data.location} sx={{height: "21rem"}}/>
+                        <PlayCircleTwoToneIcon sx={{color: "white", width: "5rem", height: "5rem", position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)"}}/>
                     </CardActionArea>
                     <CardContent>
                         <Typography>{props.data.title}</Typography>
