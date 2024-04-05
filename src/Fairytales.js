@@ -1,8 +1,8 @@
-import { Card, CardMedia, CardContent, Typography, CardActionArea, Modal, Box, Collapse, IconButton, CardActions} from '@mui/material';
+import { Card, CardMedia, CardContent, Typography, CardActionArea, Modal, Box, IconButton} from '@mui/material';
 import { styled } from '@mui/material/styles';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+// import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import React from 'react';
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 
 function FairyCard(props) {  
     // const [playing, setPlaying] = useState(false);
@@ -70,16 +70,16 @@ function FairyCard(props) {
                             <CardMedia component='video' src={props.data.location} controls autoPlay loop muted sx={{width: '100%', height: '32rem', display: 'block'}}/>
                             <CardContent sx={{backgroundColor: 'white', height: '5rem'}}>
                                 <Typography>{props.data.title}</Typography>
-                                <ExpandMore
+                                {/* <ExpandMore
                                     expand={expanded}
                                     onClick={handleExpandClick}
                                     aria-expanded={expanded}
                                     aria-label="show more"
                                 >
                                         <ExpandMoreIcon />
-                                </ExpandMore>
+                                </ExpandMore> */}
                             </CardContent>
-                            <Collapse in={expanded} timeout="auto" orientation="horizontal" unmountOnExit>
+                            {/* <Collapse in={expanded} timeout="auto" orientation="horizontal" unmountOnExit> */}
                                 {/* <CardContent sx={{backgroundColor: 'white', width: "26rem"}}>
                                     <Typography>asdf;ajds;lfkjas;dlfkj</Typography> */}
                                     {/* <Typography paragraph>
@@ -107,7 +107,7 @@ function FairyCard(props) {
                                         Set aside off of the heat to let rest for 10 minutes, and then serve.
                                     </Typography> */}
                                 {/* </CardContent> */}
-                            </Collapse>
+                            {/* </Collapse> */}
                         </Card>
                         {/* <Box sx={style}>
                         <Typography id="modal-modal-title" variant="h6" component="h2">

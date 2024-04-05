@@ -2,7 +2,7 @@ import { React,useState } from 'react';
 import Checkbox from '@mui/material/Checkbox';
 import MenuItem from '@mui/material/MenuItem';
 import ListItemText from '@mui/material/ListItemText';
-import { FormControl, InputLabel, Select, SelectChangeEvent, Typography } from '@mui/material';
+import { FormControl, InputLabel, Select } from '@mui/material';
 
 export default function Filters(props) {
     // {console.log("entered filters")}
@@ -11,13 +11,13 @@ export default function Filters(props) {
     // url.searchParams.set('step', '...');
 
     const callback = props.applyFilterCallback;
-    const [selectedCategory, setSelectedCategory] = useState([]);
+    const homepageCategory = props.homepageCategory; 
+    const [selectedCategory, setSelectedCategory] = useState(homepageCategory != null ? [homepageCategory] : []);
     // const [selectedDuration, setSelectedDuration] = useState('');
     // const [selectedAge, setSelectedAge] = useState('');
 
     const handleCategoryChange = (event) => {
         // const updatedSelectedContinent = event.target.value;
-        console.log("handled change");
         const {
             target: { value },
         } = event;
@@ -45,13 +45,11 @@ export default function Filters(props) {
     // }
 
     const applyCallback = (event) => {
-        console.log("applied callback");
         event.preventDefault();
         // selectedCategory.forEach((checkedCategory) => {
         //     urlParams.set(`param${paramCounter}`, checkedCategory);
         //     paramCounter++;
         // });
-        console.log(selectedCategory);
         callback(selectedCategory /*selectedDuration selectedAge*/)
     }
 
