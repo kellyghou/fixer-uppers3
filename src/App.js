@@ -43,32 +43,6 @@ function App(props) {
       <Route path="home" element={<HomePage setHomepageCategory={setHomepageCategory} cardData={cardData} alertMessage={alertCardMessage} waiting={isFetchingCard}/>} />
       <Route path="*" element={<Navigate to="/home" />} ></Route>
     </Routes>
-
-
-    // <div className="App">
-    //   <header className="App-header">
-    //     <img src={logo} className="App-logo" alt="logo" />
-    //     <p>
-    //       Edit <code>src/App.js</code> and save to reload.
-    //     </p>
-    //     <a
-    //       className="App-link"
-    //       href="https://reactjs.org"
-    //       target="_blank"
-    //       rel="noopener noreferrer"
-    //     >
-    //       Learn React
-    //     </a>
-    //   </header>
-    // </div>
-
-    // <div>
-    //         <NavBar />
-    //         <header>
-    //             <h1 className="title">About Project Fairytales</h1>
-    //         </header>
-    //         <Footer />
-    //     </div>
   );
 }
 
