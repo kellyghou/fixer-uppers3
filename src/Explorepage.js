@@ -1,10 +1,11 @@
 import { React,useState, useEffect } from 'react';
 import { collection, query, where, getDocs } from "firebase/firestore";
-import FairytalesList from './Fairytales.js';
+import VideosList from './VideoCards.js';
 import Filters from './Filters.js';
 import { Footer } from './About.js';
 import { NavBar } from './About.js';
 import { useLocation } from 'react-router-dom';
+import { ExploreWelcome } from './WelcomeComponents.js';
 
 export function ExplorePage(props) {
   
@@ -17,39 +18,10 @@ export function ExplorePage(props) {
     const { category } = location.state;
     homepageCategory = category;
   }
-  // const homepageCategory = props.homepageCategory;
+
   const [newSelectedCategory, setNewSelectedCategory] = useState(homepageCategory != null ? [homepageCategory] : []);
 
-  
-
-  // const fetchVideoData = () => {
-  //   setIsFetching(true);
-  //   let q = collection(props.videoDatabase, "videos");
-  //   if (Array.isArray(newSelectedCategory) && newSelectedCategory.length) {
-  //     q = query(collection(props.videoDatabase, "videos"), where("categories", "array-contains-any", {newSelectedCategory}));
-  //   }
-  //   getDocs(q)
-  //     .then(function(snapshot) {
-  //       setVideoData(snapshot);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error.message);
-  //       setAlertMessage(error.message);
-  //     })
-  //     .then(() => {
-  //       setIsFetching(false);
-  //     });
-  // }
-
-  // useEffect(() => {
-  //   fetchVideoData();
-  // }, [])
-  // const applyParams = (category) => {
-  //   setNewSelectedCategory(category);
-  // }
-
   const applyFilter = (categoryArray) => {
-    // const updatedNewSelectedCategory = categoryArray;
     setNewSelectedCategory(categoryArray);
   }
 
@@ -91,17 +63,15 @@ export function ExplorePage(props) {
       </>
     );
   } else {
-    render = <FairytalesList categoriesQuerySnapshot={videoData}/>;
+    render = <VideosList categoriesQuerySnapshot={videoData}/>;
   }
 
   return (
     <>
       <NavBar />
+      <ExploreWelcome />
       <Filters uniqueCategory={categoryList} applyFilterCallback={applyFilter} homepageCategory={homepageCategory}/>
-      {/* {isFetching && <p>Loading videos...</p>}
-      {alertMessage && <p className="bg-danger text-light p-3 mb-2">Failed to fetch the data. Error: {alertMessage}</p>} */}
       {render}
-      {/* <FairytalesList categoriesQuerySnapshot={videoData}/> */}
       <Footer />
     </>
   );
