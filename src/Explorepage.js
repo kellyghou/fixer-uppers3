@@ -4,7 +4,7 @@ import VideosList from './VideoCards.js';
 import Filters from './Filters.js';
 import { Footer } from './About.js';
 import { NavBar } from './About.js';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { ExploreWelcome } from './WelcomeComponents.js';
 
 export function ExplorePage(props) {
@@ -12,11 +12,10 @@ export function ExplorePage(props) {
   const [videoData, setVideoData] = useState([]);
   const [alertMessage, setAlertMessage] = useState(null);
   const [isFetching, setIsFetching] = useState(true);
-  const location = useLocation();
+  const params = useParams();
   let homepageCategory = null;
-  if (location.state != null) {
-    const { category } = location.state;
-    homepageCategory = category;
+  if (params.prefilter != null) {
+    homepageCategory = params.prefilter;
   }
 
   const [newSelectedCategory, setNewSelectedCategory] = useState(homepageCategory != null ? [homepageCategory] : []);

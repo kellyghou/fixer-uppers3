@@ -38,7 +38,7 @@ function App(props) {
   return (
     <Routes>
       <Route index element={<HomePage cardData={cardData} alertMessage={alertCardMessage} waiting={isFetchingCard}/>} />
-      <Route exact path="explore" element={<ExplorePage homepageCategory={homepageCategory} videoDatabase={props.videoDatabase}/>} />
+      <Route exact path="explore/:prefilter?" element={<ExplorePage homepageCategory={homepageCategory} videoDatabase={props.videoDatabase}/>} />
       <Route path="about" element={<AboutPage />} />
       <Route path="home" element={<HomePage setHomepageCategory={setHomepageCategory} cardData={cardData} alertMessage={alertCardMessage} waiting={isFetchingCard}/>} />
       <Route path="*" element={<Navigate to="/home" />} ></Route>

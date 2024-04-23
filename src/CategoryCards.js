@@ -27,7 +27,7 @@ function CategoryCard(props) {
                     </div>
                     <div>
                         <Card sx={{ maxWidth: "18rem", borderRadius: "20px"}} className='category-card' onMouseLeave={() => setFlip(!flip)}>
-                            <CardActionArea component={RouterLink} to={`/explore`} state={{ category: props.category.name }}>
+                            <CardActionArea component={RouterLink} to={`/explore/${props.category.name}`}>
                                 <CardContent
                                 sx={{height: "21rem"}}
                                 >
