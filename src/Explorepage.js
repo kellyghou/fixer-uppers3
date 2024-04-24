@@ -21,7 +21,12 @@ export function ExplorePage(props) {
   const [newSelectedCategory, setNewSelectedCategory] = useState(homepageCategory != null ? [homepageCategory] : []);
 
   const applyFilter = (categoryArray) => {
+    // var arrStr = encodeURIComponent(JSON.stringify(categoryArray));
+    // $('#myLink').attr({ href: '/myLink?array=' + arrStr });
+    // console.log(categoryArray);
+    // window.location.href=`/explore/${typeof categoryArray === 'string' ? categoryArray.split(',') : categoryArray}`;
     setNewSelectedCategory(categoryArray);
+    // console.log(categoryArray);
   }
 
 

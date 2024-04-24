@@ -1,5 +1,29 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import logoImage from "./img/ecofriendslogo.png";
+
+function cacheImages(array)
+{
+    if (!cacheImages.list) {
+        cacheImages.list = [];
+    }
+    var list = cacheImages.list;
+    for (var i = 0; i < array.length; i++) {
+        var img = new Image();
+        img.onload = function() {
+            var index = list.indexOf(this);
+            if (index !== -1) {
+                // remove image from the array once it's loaded
+                // for memory consumption reasons
+                list.splice(index, 1);
+            }
+        }
+        list.push(img);
+        img.src = array[i];
+    }
+}
+
+cacheImages([logoImage]);
 
 export function Footer() {
     return (
@@ -42,7 +66,7 @@ function HamburgerMenu() {
 function HomeLogo() {
     return (
         <a href="/" className="navbar-brand group-name">
-            <img src="img/ecofriendslogo.png" alt="ecofriends logo" className="d-inline-block align-top"/>
+            <img src={logoImage} alt="ecofriends logo" className="d-inline-block align-top"/>
             Eco Friends
         </a>
     );
