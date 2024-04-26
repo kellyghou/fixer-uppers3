@@ -7,7 +7,7 @@ import { FormControl, InputLabel, Select, Button } from '@mui/material';
 export default function Filters(props) {
     const callback = props.applyFilterCallback;
     const homepageCategory = props.homepageCategory; 
-    const [selectedCategory, setSelectedCategory] = useState(homepageCategory != null ? [homepageCategory] : []);
+    const [selectedCategory, setSelectedCategory] = useState(homepageCategory != null ? homepageCategory : []);
 
     const handleCategoryChange = (event) => {
         const {

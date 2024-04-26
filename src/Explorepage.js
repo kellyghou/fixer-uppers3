@@ -12,13 +12,19 @@ export function ExplorePage(props) {
   const [videoData, setVideoData] = useState([]);
   const [alertMessage, setAlertMessage] = useState(null);
   const [isFetching, setIsFetching] = useState(true);
+  const categoryList = ["Food", "Fashion", "Cosmetics", "Home", "Transportation", "Pets", "Reduce Waste", "Clean Energy"];
+  // const includesAll = (arr, values) => values.every(v => arr.includes(v));
   const params = useParams();
   let homepageCategory = null;
   if (params.prefilter != null) {
+    // homepageCategory = params.prefilter.includes(',')? params.prefilter.split(',') : [params.prefilter];
+    // if (!includesAll(categoryList, homepageCategory)) {
+    //   homepageCategory = null;
+    // }
     homepageCategory = params.prefilter;
   }
 
-  const [newSelectedCategory, setNewSelectedCategory] = useState(homepageCategory != null ? [homepageCategory] : []);
+  const [newSelectedCategory, setNewSelectedCategory] = useState(homepageCategory != null ? homepageCategory : []);
 
   const applyFilter = (categoryArray) => {
     // var arrStr = encodeURIComponent(JSON.stringify(categoryArray));
@@ -53,8 +59,6 @@ export function ExplorePage(props) {
       })
       // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [newSelectedCategory])
-
-  const categoryList = ["Food", "Fashion", "Cosmetics", "Home", "Transportation", "Pets", "Reduce Waste", "Clean Energy"];
 
 
   let render;
