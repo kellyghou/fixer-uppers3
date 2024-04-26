@@ -44,10 +44,10 @@ function CategoryCard(props) {
 }
 
 export default function CategoriesList(props) {
-    const setHomepageCategory = props.setHomepageCategory;
+    // const setHomepageCategory = props.setHomepageCategory;
 
     const categoryCards = props.cardData.map((category) => {
-        return (<CategoryCard key={category.id} category={category} setHomepageCategory={setHomepageCategory}/>);
+        return (<CategoryCard key={category.id} category={category} /*setHomepageCategory={setHomepageCategory}*//>);
     })
 
     return (

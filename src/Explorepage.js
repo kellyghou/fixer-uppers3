@@ -17,6 +17,7 @@ export function ExplorePage(props) {
   const params = useParams();
   let homepageCategory = null;
   if (params.prefilter != null) {
+    console.log(params.prefilter);
     // homepageCategory = params.prefilter.includes(',')? params.prefilter.split(',') : [params.prefilter];
     // if (!includesAll(categoryList, homepageCategory)) {
     //   homepageCategory = null;
@@ -24,7 +25,7 @@ export function ExplorePage(props) {
     homepageCategory = params.prefilter;
   }
 
-  const [newSelectedCategory, setNewSelectedCategory] = useState(homepageCategory != null ? homepageCategory : []);
+  const [newSelectedCategory, setNewSelectedCategory] = useState(homepageCategory != null ? [homepageCategory] : []);
 
   const applyFilter = (categoryArray) => {
     // var arrStr = encodeURIComponent(JSON.stringify(categoryArray));

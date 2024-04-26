@@ -8,7 +8,7 @@ import { HomeWelcome } from './WelcomeComponents.js';
 
 
 export function HomePage(props) {
-    const setHomepageCategory = props.setHomepageCategory;
+    // const setHomepageCategory = props.setHomepageCategory;
 
     return (
         <div>
@@ -17,7 +17,7 @@ export function HomePage(props) {
                 <HomeWelcome/>
                 {props.waiting && <p>Loading cards...</p>}
                 {props.alertMessage && <p className="bg-danger text-light p-3 mb-2">Failed to fetch the data. Error: {props.alertMessage}</p>}
-                <CategoriesList cardData={props.cardData} setHomepageCategory={setHomepageCategory}/>
+                <CategoriesList cardData={props.cardData} /*setHomepageCategory={setHomepageCategory}*//>
             </main>
             <Footer />
         </div>
