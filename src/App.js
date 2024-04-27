@@ -16,7 +16,9 @@ function App(props) {
 
   const fetchCardData = () => {
     setIsFetchingCard(true);
-    fetch('cards.json')
+    fetch('/cards.json')
+      // .then(res => res.text())
+      // .then(text => console.log(text)) 
       .then(function(response){
         return response.json();
       })
