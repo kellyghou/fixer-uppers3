@@ -4,7 +4,7 @@ import VideosList from './VideoCards.js';
 import Filters from './Filters.js';
 import { Footer } from './About.js';
 import { NavBar } from './About.js';
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { ExploreWelcome } from './WelcomeComponents.js';
 
 export function ExplorePage(props) {

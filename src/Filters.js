@@ -3,10 +3,9 @@ import Checkbox from '@mui/material/Checkbox';
 import MenuItem from '@mui/material/MenuItem';
 import ListItemText from '@mui/material/ListItemText';
 import { FormControl, InputLabel, Select, Button } from '@mui/material';
-import { Link as RouterLink} from 'react-router-dom';
 
 export default function Filters(props) {
-    const callback = props.applyFilterCallback;
+    // const callback = props.applyFilterCallback;
     const homepageCategory = props.homepageCategory; 
     const [selectedCategory, setSelectedCategory] = useState(homepageCategory != null ? homepageCategory : []);
 
