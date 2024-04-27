@@ -1,5 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import logoImage from "./img/ecofriendslogo.png";
+import cacheImages from './CacheImages';
+
+
+cacheImages([logoImage]);
 
 export function Footer() {
     return (
@@ -42,7 +47,7 @@ function HamburgerMenu() {
 function HomeLogo() {
     return (
         <a href="/" className="navbar-brand group-name">
-            <img src="img/ecofriendslogo.png" alt="ecofriends logo" className="d-inline-block align-top"/>
+            <img src={logoImage} alt="ecofriends logo" className="d-inline-block align-top"/>
             Eco Friends
         </a>
     );

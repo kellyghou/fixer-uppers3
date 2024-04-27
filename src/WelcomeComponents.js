@@ -1,6 +1,10 @@
 import { Box, Button, Typography } from '@mui/material';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import React from 'react';
+import cacheImages from './CacheImages';
+import homepageWelcomeImage from './img/homepagebackground.jpg';
+
+cacheImages([homepageWelcomeImage]);
 
 export function ExploreWelcome() {
     return (
@@ -20,7 +24,7 @@ export function ExploreWelcome() {
 
 export function HomeWelcome() {
     return (
-        <Box sx={{display: 'flex', flexDirection: 'column', marginBottom: '6rem', height: 'calc(100vh - 6rem)', backgroundImage: "url('./img/homepagebackground.jpg')", backgroundRepeat: "no-repeat", backgroundSize: "cover"}}>
+        <Box sx={{display: 'flex', flexDirection: 'column', marginBottom: '6rem', height: 'calc(100vh - 6rem)', backgroundImage: `url(${homepageWelcomeImage})`, backgroundRepeat: "no-repeat", backgroundSize: "cover"}}>
             <Box sx={{color: 'white', textAlign: 'left', paddingTop: '10rem', paddingLeft: '6rem'}}>
                 <Typography variant='h1' sx={{fontSize: '3rem', flexWrap: 'wrap', width: '35rem', marginBottom: '6rem'}}>Explore sustainability tips in one place.</Typography>
                 <Box sx={{flexWrap: 'wrap', width: '40rem'}}>
