@@ -37,7 +37,7 @@ export default function Filters(props) {
                         ))}    
                     </Select>
                 </FormControl>
-                <Button variant="contained" onClick={applyCallback} sx={{'&:hover' : {backgroundColor: '#ffbf80'}, textTransform: "none", borderColor: "black", fontWeight: "700", borderStyle: "solid", borderWidth: "medium", borderRadius: "20rem", color: "rgba(0, 0, 0, .7)", backgroundColor: "#ffbf80"}}>Apply Filter</Button>
+                <Button variant="contained" onClick={applyCallback} sx={{'&:hover' : {backgroundColor: '#ffbf80'}, textTransform: "none", borderColor: "white", fontWeight: "700", borderStyle: "solid", borderWidth: "medium", borderRadius: "20rem", color: "rgba(0, 0, 0, .7)", backgroundColor: "#ffbf80"}}>Apply Filter</Button>
             </div>
         </section>);
 }
