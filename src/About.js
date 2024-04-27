@@ -26,7 +26,7 @@ function NavLinks() {
                     <Link to="/home" className="nav-link">Home</Link>
                 </li>
                 <li className="nav-item">
-                    <Link reloadDocument to="/explore" className="nav-link">Explore</Link>
+                    <Link reloadDocument to="/explore/" className="nav-link">Explore</Link>
                 </li>
                 <li className="nav-item">
                     <Link to="/about" className="nav-link about-link">About Us</Link>

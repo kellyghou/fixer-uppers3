@@ -15,34 +15,29 @@ export function ExplorePage(props) {
   const categoryList = ["Food", "Fashion", "Cosmetics", "Home", "Transportation", "Pets", "Reduce Waste", "Clean Energy"];
   const includesAll = (arr, values) => values.every(v => arr.includes(v));
   const params = useParams();
-  let homepageCategory = null;
+  let homepageCategory = [];
   if (params.prefilter != null) {
-    console.log(params.prefilter);
+    // console.log(params.prefilter);
     homepageCategory = params.prefilter.includes(',')? params.prefilter.split(',') : [params.prefilter];
     if (!includesAll(categoryList, homepageCategory)) {
       homepageCategory = [];
     }
   }
 
-  const [newSelectedCategory, setNewSelectedCategory] = useState(homepageCategory != null ? homepageCategory : []);
+  // const [newSelectedCategory, setNewSelectedCategory] = useState(homepageCategory != null ? homepageCategory : []);
 
-  const applyFilter = (categoryArray) => {
-    // var arrStr = encodeURIComponent(JSON.stringify(categoryArray));
-    // $('#myLink').attr({ href: '/myLink?array=' + arrStr });
-    // console.log(categoryArray);
-    // window.location.href=`/explore/${typeof categoryArray === 'string' ? categoryArray.split(',') : categoryArray}`;
-    setNewSelectedCategory(categoryArray);
-    // console.log(categoryArray);
-  }
+  // const applyFilter = (categoryArray) => {
+  //   setNewSelectedCategory(categoryArray);
+  // }
 
 
   useEffect(() => {
     setIsFetching(true);
     let q = collection(props.videoDatabase, "videos");
-    console.log(newSelectedCategory);
+    // console.log(newSelectedCategory);
     console.log(homepageCategory);
-    if (Array.isArray(newSelectedCategory) && newSelectedCategory.length > 0) {
-      q = query(collection(props.videoDatabase, "videos"), where("categories", "array-contains-any", newSelectedCategory));
+    if (Array.isArray(homepageCategory) && homepageCategory.length > 0) {
+      q = query(collection(props.videoDatabase, "videos"), where("categories", "array-contains-any", homepageCategory));
     }
     getDocs(q)
       .then(function(snapshot) {
@@ -58,7 +53,7 @@ export function ExplorePage(props) {
         setIsFetching(false);
       })
       // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [newSelectedCategory])
+  }, [])
 
 
   let render;
@@ -78,7 +73,7 @@ export function ExplorePage(props) {
     <>
       <NavBar />
       <ExploreWelcome />
-      <Filters uniqueCategory={categoryList} applyFilterCallback={applyFilter} homepageCategory={homepageCategory}/>
+      <Filters uniqueCategory={categoryList} /*applyFilterCallback={applyFilter}*/ homepageCategory={homepageCategory}/>
       {render}
       <Footer />
     </>
