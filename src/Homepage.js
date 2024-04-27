@@ -4,8 +4,6 @@ import { NavBar } from './About.js';
 import CategoriesList from './CategoryCards.js';
 import { Button } from '@mui/material';
 import { HomeWelcome } from './WelcomeComponents.js';
-// Practicing Commit
-
 
 export function HomePage(props) {
     const setHomepageCategory = props.setHomepageCategory;
