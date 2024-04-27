@@ -22,9 +22,9 @@ export function HomeWelcome() {
     return (
         <Box sx={{display: 'flex', flexDirection: 'column', marginBottom: '6rem', height: 'calc(100vh - 6rem)', backgroundImage: "url('./img/homepagebackground.jpg')", backgroundRepeat: "no-repeat", backgroundSize: "cover"}}>
             <Box sx={{color: 'white', textAlign: 'left', paddingTop: '10rem', paddingLeft: '6rem'}}>
-                <Typography variant='h1' sx={{fontSize: '3rem', flexWrap: 'wrap', width: '35rem', marginBottom: '6rem'}}>Explore sustainability tips in one place.</Typography>
-                <Box sx={{flexWrap: 'wrap', width: '40rem'}}>
-                    <Typography variant='subtitle1'>View our videos and blogs to learn how you can incorporate sustainable habits in your daily life to support and save our environment.</Typography>
+                <Typography variant='h1' sx={{fontSize: '3.5rem', flexWrap: 'wrap', width: '45rem', marginBottom: '6rem'}}>Explore sustainability tips in one place.</Typography>
+                <Box sx={{flexWrap: 'wrap', width: '60rem'}}>
+                    <Typography variant='h5'>View our videos and blogs to learn how you can incorporate sustainable habits in your daily life to support and save our environment.</Typography>
                 </Box>
             </Box>
             <Box sx={{marginTop: 'auto', marginRight: 'auto', marginLeft: 'auto', flexDirection: 'column', alignSelf: 'flex-end', display: 'flex', justifyContent: 'center'}}>
