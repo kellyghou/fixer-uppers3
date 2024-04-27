@@ -13,9 +13,11 @@ export function HomePage(props) {
             <NavBar />
             <main className='homepage-content'>
                 <HomeWelcome/>
-                {props.waiting && <p>Loading cards...</p>}
-                {props.alertMessage && <p className="bg-danger text-light p-3 mb-2">Failed to fetch the data. Error: {props.alertMessage}</p>}
-                <CategoriesList cardData={props.cardData} setHomepageCategory={setHomepageCategory}/>
+                <div id='cards'>
+                    {props.waiting && <p>Loading cards...</p>}
+                    {props.alertMessage && <p className="bg-danger text-light p-3 mb-2">Failed to fetch the data. Error: {props.alertMessage}</p>}
+                    <CategoriesList cardData={props.cardData} setHomepageCategory={setHomepageCategory}/>
+                </div>
             </main>
             <Footer />
         </div>
