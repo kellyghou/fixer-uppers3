@@ -1,7 +1,11 @@
+// import 'firebase/compat/auth';
+// import 'firebase/compat/auth';
+// import 'firebase/compat/firestore';
 import { initializeApp } from "firebase/app";
 // Required for side-effects
-import "firebase/firestore";
+// import "firebase/firestore";
 import { getFirestore } from "firebase/firestore";
+import { getAuth  } from "firebase/auth";
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
@@ -28,6 +32,15 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
+
+// Initialize Firebase Authentication and get a reference to the service
+const auth = getAuth(app);
+
+
+
+export {app, auth};
+
+
 // await setDoc(doc(db, "videos", "reusablebag"), {
 //   
 // });

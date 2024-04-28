@@ -7,6 +7,7 @@ import './App.css';
 import { ExplorePage } from './Explorepage';
 import { AboutPage } from './AboutPage';
 import { HomePage } from './Homepage';
+import { LoginPage } from './LoginPage';
 
 function App(props) {
   const [cardData, setCardData] = useState([]);
@@ -42,6 +43,7 @@ function App(props) {
       <Route index element={<HomePage cardData={cardData} alertMessage={alertCardMessage} waiting={isFetchingCard}/>} />
       <Route exact path="explore/:prefilter?" element={<ExplorePage /*homepageCategory={homepageCategory}*/ videoDatabase={props.videoDatabase}/>} />
       <Route path="about" element={<AboutPage />} />
+      <Route path="login" element={<LoginPage />} />
       <Route path="home" element={<HomePage /*setHomepageCategory={setHomepageCategory}*/ cardData={cardData} alertMessage={alertCardMessage} waiting={isFetchingCard}/>} />
       <Route path="*" element={<Navigate to="/home" />} ></Route>
     </Routes>
