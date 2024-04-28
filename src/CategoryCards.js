@@ -27,7 +27,7 @@ function CategoryCard(props) {
                     </div>
                     <div>
                         <Card sx={{ maxWidth: "18rem", borderRadius: "20px"}} className='category-card' onMouseLeave={() => setFlip(!flip)}>
-                            <CardActionArea component={RouterLink} to={`/explore`} state={{ category: props.category.name }}>
+                            <CardActionArea component={RouterLink} to={`/explore/${props.category.name}`}>
                                 <CardContent
                                 sx={{height: "21rem"}}
                                 >
@@ -44,10 +44,10 @@ function CategoryCard(props) {
 }
 
 export default function CategoriesList(props) {
-    const setHomepageCategory = props.setHomepageCategory;
+    // const setHomepageCategory = props.setHomepageCategory;
 
     const categoryCards = props.cardData.map((category) => {
-        return (<CategoryCard key={category.id} category={category} setHomepageCategory={setHomepageCategory}/>);
+        return (<CategoryCard key={category.id} category={category} /*setHomepageCategory={setHomepageCategory}*//>);
     })
 
     return (

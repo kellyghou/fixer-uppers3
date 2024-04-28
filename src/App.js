@@ -12,11 +12,13 @@ function App(props) {
   const [cardData, setCardData] = useState([]);
   const [alertCardMessage, setAlertCardMessage] = useState(null);
   const [isFetchingCard, setIsFetchingCard] = useState(false);
-  const [homepageCategory, setHomepageCategory] = useState([]);
+  // const [homepageCategory, setHomepageCategory] = useState([]);
 
   const fetchCardData = () => {
     setIsFetchingCard(true);
-    fetch('cards.json')
+    fetch('/cards.json')
+      // .then(res => res.text())
+      // .then(text => console.log(text)) 
       .then(function(response){
         return response.json();
       })
@@ -38,9 +40,9 @@ function App(props) {
   return (
     <Routes>
       <Route index element={<HomePage cardData={cardData} alertMessage={alertCardMessage} waiting={isFetchingCard}/>} />
-      <Route exact path="explore" element={<ExplorePage homepageCategory={homepageCategory} videoDatabase={props.videoDatabase}/>} />
+      <Route exact path="explore/:prefilter?" element={<ExplorePage /*homepageCategory={homepageCategory}*/ videoDatabase={props.videoDatabase}/>} />
       <Route path="about" element={<AboutPage />} />
-      <Route path="home" element={<HomePage setHomepageCategory={setHomepageCategory} cardData={cardData} alertMessage={alertCardMessage} waiting={isFetchingCard}/>} />
+      <Route path="home" element={<HomePage /*setHomepageCategory={setHomepageCategory}*/ cardData={cardData} alertMessage={alertCardMessage} waiting={isFetchingCard}/>} />
       <Route path="*" element={<Navigate to="/home" />} ></Route>
     </Routes>
   );

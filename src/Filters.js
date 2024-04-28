@@ -5,9 +5,9 @@ import ListItemText from '@mui/material/ListItemText';
 import { FormControl, InputLabel, Select, Button } from '@mui/material';
 
 export default function Filters(props) {
-    const callback = props.applyFilterCallback;
+    // const callback = props.applyFilterCallback;
     const homepageCategory = props.homepageCategory; 
-    const [selectedCategory, setSelectedCategory] = useState(homepageCategory != null ? [homepageCategory] : []);
+    const [selectedCategory, setSelectedCategory] = useState(homepageCategory != null ? homepageCategory : []);
 
     const handleCategoryChange = (event) => {
         const {
@@ -20,7 +20,18 @@ export default function Filters(props) {
 
     const applyCallback = (event) => {
         event.preventDefault();
-        callback(selectedCategory)
+        // callback(selectedCategory);
+        const urlString = window.location.href;
+        const urlArray = urlString.split("explore");
+        const urlBeginning = urlArray[0];
+        const urlEnding = "explore/".concat(selectedCategory.toString());
+        const newUrlString = urlBeginning.concat(urlEnding);
+        const url = new URL(newUrlString);
+        // console.log(urlBeginning);
+        // console.log(urlEnding);
+        // console.log(url.toString());
+        // console.log(url);
+        window.location.href = url.toString();
     }  
 
     return (
