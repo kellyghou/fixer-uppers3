@@ -32,7 +32,7 @@ export function HomeWelcome() {
                 </Box>
             </Box>
             <Box sx={{marginTop: 'auto', marginRight: 'auto', marginLeft: 'auto', flexDirection: 'column', alignSelf: 'flex-end', display: 'flex', justifyContent: 'center'}}>
-                <Button sx={{fontSize: '2 rem', '&:hover' : {backgroundColor: '#ffb366'}, display: 'flex', borderRadius: '5rem', borderColor: 'rgba(255, 255, 255, 0.7)', fontWeight: '700', borderStyle: 'solid', borderWidth: 'medium', height: '3.5rem', width: 'auto', backgroundColor: 'rgba(255, 191, 128, 0.7)', color: 'white', textTransform: "none"}} href="#cards">
+                <Button href="#cards" sx={{fontSize: '2 rem', '&:hover' : {backgroundColor: '#ffb366', color: 'white'}, display: 'flex', borderRadius: '5rem', borderColor: 'rgba(255, 255, 255, 0.7)', fontWeight: '700', borderStyle: 'solid', borderWidth: 'medium', height: '3.5rem', width: 'auto', backgroundColor: 'rgba(255, 191, 128, 0.7)', color: 'white', textTransform: "none"}}>
                     Learn more about what you can do
                 </Button>
                 <ArrowDownwardIcon className='arrow' sx={{margin: 'auto', display: 'flex', width: '5rem', height: '5rem', fill: '#ff9933'}}/>

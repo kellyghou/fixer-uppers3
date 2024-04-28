@@ -8,7 +8,7 @@ export function HomePage(props) {
     // const setHomepageCategory = props.setHomepageCategory;
 
     return (
-        <div>firebase hosting:channel:deploy CHANNEL_ID
+        <div>
             <NavBar />
             <main className='homepage-content'>
                 <HomeWelcome/>
