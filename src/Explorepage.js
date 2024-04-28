@@ -6,8 +6,9 @@ import { Footer } from './About.js';
 import { NavBar } from './About.js';
 import { useParams } from 'react-router-dom';
 import { ExploreWelcome } from './WelcomeComponents.js';
+import { db } from './Firebase.js';
 
-export function ExplorePage(props) {
+export function ExplorePage() {
   
   const [videoData, setVideoData] = useState([]);
   const [alertMessage, setAlertMessage] = useState(null);
@@ -38,11 +39,11 @@ export function ExplorePage(props) {
 
   useEffect(() => {
     setIsFetching(true);
-    let q = collection(props.videoDatabase, "videos");
+    let q = collection(db, "videos");
     console.log(newSelectedCategory);
     console.log(homepageCategory);
     if (Array.isArray(newSelectedCategory) && newSelectedCategory.length > 0) {
-      q = query(collection(props.videoDatabase, "videos"), where("categories", "array-contains-any", newSelectedCategory));
+      q = query(collection(db, "videos"), where("categories", "array-contains-any", newSelectedCategory));
     }
     getDocs(q)
       .then(function(snapshot) {
