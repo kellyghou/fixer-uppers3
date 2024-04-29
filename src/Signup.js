@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { auth } from "./Firebase.js";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import firebase from 'firebase/compat/app';
+import { auth, db } from "./Firebase.js";
+import { doc, setDoc, addDoc, collection } from "firebase/firestore"; 
+import { createUserWithEmailAndPassword, deleteUser } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
 
 export function Signup() {
@@ -9,17 +11,34 @@ export function Signup() {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [notice, setNotice] = useState("");
+    const [userId, setUserId] = useState("");
 
     const signupWithUsernameAndPassword = async (e) => {
         e.preventDefault();
 
         if (password === confirmPassword) {
             try {
-                await createUserWithEmailAndPassword(auth, email, password);
-                navigate("/");
-            } catch {
+                createUserWithEmailAndPassword(auth, email, password)
+                .then(function () {
+                    return auth.currentUser.uid;
+                    // console.log(auth.currentUser.uid);
+                }).then(function (uid) {
+                    setDoc(doc(db, "userData", uid, "savedVideos", "exists"), {
+                    exists: "true"
+                    });
+                })
+                .catch(function (error) {
+                    console.log(error) // FIX ERROR HANDLING!!!!!!!!!!!!!! DELETE USER IF COULDNT MAKE DOC
+                });;
+                // navigate("/");
+            } catch { //HAVENT TESTED THIS YET !!!!!!!!!!!!!!!!!!!!!!!!
+                deleteUser(auth.currentUser).then(() => {
+                    // User deleted.
+                  }).catch((error) => {
+                    console.log(error);
+                  });
                 setNotice("Sorry, something went wrong. Please try again.");
-            }     
+            } 
         } else {
             setNotice("Passwords don't match. Please try again.");
         }

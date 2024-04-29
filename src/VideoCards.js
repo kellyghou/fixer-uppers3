@@ -1,14 +1,38 @@
-import { Card, CardMedia, CardContent, Typography, CardActionArea, Modal} from '@mui/material';
+import { Card, CardMedia, CardContent, Typography, CardActionArea, Modal, Tooltip} from '@mui/material';
 // import { styled } from '@mui/material/styles';
 // import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { onAuthStateChanged } from "firebase/auth";
+import { auth, db } from "./Firebase.js";
+import { doc, setDoc, deleteDoc, getDoc } from "firebase/firestore";
 import SmartDisplayIcon from '@mui/icons-material/SmartDisplay';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 function VideoCard(props) {  
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const user = props.user;
+    const key = props.identifier;
+    const video = props.data.location;
+    const isSaved = () => {
+        if (!user) {
+            return false;
+        }
+        const uid = user.uid;
+        const isSavedRef = doc(db, "userData", uid, "savedVideos", key)
+        getDoc(isSavedRef)
+        .then(function(snapshot) {
+            return !snapshot.empty;
+        });
+    }
+    const [saved, setSaved] = useState(isSaved);
+
+    // useEffect(() => {
+    //     isSaved();
+    //     console.log(saved);
+    //   }, [saved])
 
     const style = {
         position: 'absolute',
@@ -22,6 +46,25 @@ function VideoCard(props) {
         // boxShadow: 24,
         // p: 4,
       };
+
+    const saveVideo = (event) => {
+        event.preventDefault();
+        if (user) {
+            const uid = user.uid;
+            const saveVideoRef = doc(db, "userData", uid, "savedVideos", key);
+            if (!saved) {
+                setDoc(saveVideoRef, { location: video }, { merge: true });
+                setSaved(true);
+            } else {
+                deleteDoc(saveVideoRef)
+                .then(function() {
+                    setSaved(false);
+                })
+            }
+        } else {
+
+        }
+    }
 
     //   const ExpandMore = styled((props) => {
     //     const { expand, ...other } = props;
@@ -49,6 +92,9 @@ function VideoCard(props) {
                     </CardActionArea>
                     <CardContent>
                         <Typography>{props.data.title}</Typography>
+                        <Tooltip title={props.tooltip}>
+                            <FavoriteBorderIcon color={saved? 'red' : 'white'} onClick={saveVideo}/>
+                        </Tooltip>
                     </CardContent>
                     <Modal
                         open={open}
@@ -82,12 +128,32 @@ function VideoCard(props) {
 }
 
 export default function VideosList(props) {
+    const [user, setUser] = useState();
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            // if (isSaved(uid)) {
+               
+            // } else {
+            //     // User is signed in, see docs for a list of available properties
+            //     // https://firebase.google.com/docs/reference/js/auth.user
+            //     const saveVideoRef = doc(db, "userData", uid, "savedVideos", props.data.id);
+            //     setDoc(saveVideoRef, { location: props.data.location }, { merge: true });
+            // }
+            setUser(user);
+       
+        // ...
+        } else {
+        // User is signed out
+        // ...
+        
+        }
+    });
     // console.log(props.categoriesQuerySnapshot);
     const categoryVideos = props.categoriesQuerySnapshot.map((doc) => {
         // doc.data() is never undefined for query doc snapshots
         // console.log(doc.id, " => ", doc.data());
         const data = doc.data();
-        return (<VideoCard key={data.id} data={data}/>);
+        return (<VideoCard identifier={doc.id} data={data} user={user} tooltip={user? "" : "You must sign-in to save"}/>);
     });
 
     return (
