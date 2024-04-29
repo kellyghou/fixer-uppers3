@@ -97,7 +97,7 @@ function VideoCard(props) {
                     <CardContent>
                         <Typography>{props.data.title}</Typography>
                         <Tooltip title={props.tooltip}>
-                            {saved? <FavoriteIcon sx={{color: 'red'}} onClick={saveVideo}/> : <FavoriteBorderIcon onClick={saveVideo} />}
+                            {saved? <FavoriteIcon sx={{alignSelf: 'flex-end', color: 'red', position: 'absolute', right: '.5rem', bottom: '.5rem', marginLeft: 'auto', marginTop: 'auto'}} onClick={saveVideo}/> : <FavoriteBorderIcon  sx={{alignSelf: 'flex-end', position: 'absolute', right: '.5rem', bottom: '.5rem', marginLeft: 'auto', marginTop: 'auto'}}onClick={saveVideo} />}
                             {/* <FavoriteBorderIcon sx={{color: saved? 'red' : 'white'}} onClick={saveVideo}/> */}
                         </Tooltip>
                     </CardContent>
