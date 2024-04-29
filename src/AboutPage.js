@@ -8,7 +8,7 @@ export function AboutPage() {
         <div>
             <NavBar />
             <header>
-                <h1 className="title">About Project Fairytales</h1>
+                <h1 className="title">About Us</h1>
             </header>
             <main>
                 <AboutMainContent />
