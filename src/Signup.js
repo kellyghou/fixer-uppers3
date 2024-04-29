@@ -1,17 +1,15 @@
 import React, { useState } from "react";
-import firebase from 'firebase/compat/app';
 import { auth, db } from "./Firebase.js";
-import { doc, setDoc, addDoc, collection } from "firebase/firestore"; 
+import { doc, setDoc } from "firebase/firestore"; 
 import { createUserWithEmailAndPassword, deleteUser } from "firebase/auth";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export function Signup() {
-    const navigate = useNavigate();
+    // const navigate = useNavigate(); from react-router-dom
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [notice, setNotice] = useState("");
-    const [userId, setUserId] = useState("");
 
     const signupWithUsernameAndPassword = async (e) => {
         e.preventDefault();

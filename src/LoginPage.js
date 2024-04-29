@@ -1,10 +1,7 @@
-import { useEffect } from 'react';
 import { useState } from "react";
 import { auth } from "./Firebase";
 import { Link, useNavigate } from "react-router-dom";
-import firebase from 'firebase/compat/app';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword  } from "firebase/auth";
-import * as firebaseui from 'firebaseui';
+import { signInWithEmailAndPassword  } from "firebase/auth";
 import 'firebaseui/dist/firebaseui.css'
 
 export function LoginPage() {

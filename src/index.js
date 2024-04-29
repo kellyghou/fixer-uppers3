@@ -5,7 +5,6 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 import cardData from './data/cards.json';
-import { useState, useEffect } from 'react';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
