@@ -150,8 +150,7 @@ export default function VideosList(props) {
                 setIsLoading(false);
             // ...
             } else {
-            // User is signed out
-            // ...
+            setIsLoading(false);
             
             }
         });
