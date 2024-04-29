@@ -23,21 +23,24 @@ export function Footer() {
 }
 
 function NavLinks() {
-   return (
-       <div className="collapse navbar-collapse" id="toggleMobileMenu">
-           <ul className="navbar-nav ms-auto">
-               <li className="nav-item">
-                   <Link to="/home" className="nav-link">Home</Link>
-               </li>
-               <li className="nav-item">
-                   <Link reloadDocument to="/explore" className="nav-link">Explore</Link>
-               </li>
-               <li className="nav-item">
-                   <Link to="/about" className="nav-link about-link">About Us</Link>
-               </li>
-           </ul>
-       </div>
-   );
+    return (
+        <div className="collapse navbar-collapse" id="toggleMobileMenu">
+            <ul className="navbar-nav ms-auto">
+                <li className="nav-item">
+                    <Link to="/home" className="nav-link">Home</Link>
+                </li>
+                <li className="nav-item">
+                    <Link reloadDocument to="/explore" className="nav-link">Explore</Link>
+                </li>
+                <li className="nav-item">
+                    <Link to="/about" className="nav-link about-link">About Us</Link>
+                </li>
+                <li className="nav-item">
+                    <Link to="/login" className="nav-link">Login</Link>
+                </li>
+            </ul>
+        </div>
+    );
 }
 
 function HamburgerMenu() {
