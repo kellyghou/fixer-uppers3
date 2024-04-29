@@ -116,7 +116,7 @@ function UsageStatement() {
 function WhoWeAreStatement() {
     return (
         <section>
-            <h2 className="about-heading">Who we are</h2>
+            <h2 className="about-heading">We help individuals tailor their lifestyle to make their living choices more healthy.</h2>
             <p>
                 We are a group of students at the University of Washington who created this website as a
                 final project demonstrating our proficiency in HTML, CSS, Javascript, and React.

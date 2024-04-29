@@ -37,7 +37,7 @@ nav a {
 
 footer {
   padding: 20px;
-  background-color: #7FFFD4;
+  background-color: #ffbf80;
   color: black;
 }
 
@@ -144,7 +144,7 @@ input:hover {
 }
 
 .title {
-  text-align: right;
+  text-align: center;
   padding: 2rem;
 }
 
@@ -174,7 +174,8 @@ input:hover {
 }
 
 .about-heading {
-  text-align: left;
+  text-align: center;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 
