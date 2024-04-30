@@ -1,6 +1,6 @@
 import React from 'react';
 import { Footer } from './About.js';
-import { NavBar } from './About.js';
+import { NavBar } from './NavBar.js';
 import CategoriesList from './CategoryCards.js';
 import { HomeWelcome } from './WelcomeComponents.js';
 
