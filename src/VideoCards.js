@@ -16,7 +16,7 @@ function VideoCard(props) {
     const handleClose = () => setOpen(false);
     const user = props.user;
     const key = props.identifier;
-    const video = props.data.location;
+    const video = props.data;
     
     const [saved, setSaved] = useState();
 
@@ -36,7 +36,7 @@ function VideoCard(props) {
         } else {
             setSaved(false);
         }
-      }, [saved, key, user]);
+      }, []);
 
     const style = {
         position: 'absolute',
@@ -57,7 +57,7 @@ function VideoCard(props) {
             const uid = user.uid;
             const saveVideoRef = doc(db, "userData", uid, "savedVideos", key);
             if (!saved) {
-                setDoc(saveVideoRef, { location: video }, { merge: true });
+                setDoc(saveVideoRef, { categories: video.categories, title: video.title, location: video.location }, { merge: true });
                 setSaved(true);
             } else {
                 deleteDoc(saveVideoRef)
@@ -133,57 +133,68 @@ function VideoCard(props) {
 }
 
 export default function VideosList(props) {
-    const [isLoading, setIsLoading] = useState(true);
-    const [user, setUser] = useState();
-    useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                // if (isSaved(uid)) {
+    const user = props.user;
+    const categoryVideos = props.categoriesQuerySnapshot.map((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        // console.log(doc.id, " => ", doc.data());
+        const data = doc.data();
+        console.log(data);
+        if (doc.id === 'exists') {
+            return;
+        }
+        return (<VideoCard identifier={doc.id} user={user} data={data} tooltip={user? "" : "You must sign-in to save"}/>);
+    });
+    // const [isLoading, setIsLoading] = useState(true);
+    // const [user, setUser] = useState();
+    // useEffect(() => {
+    //     onAuthStateChanged(auth, (user) => {
+    //         if (user) {
+    //             // if (isSaved(uid)) {
                     
-                // } else {
-                //     // User is signed in, see docs for a list of available properties
-                //     // https://firebase.google.com/docs/reference/js/auth.user
-                //     const saveVideoRef = doc(db, "userData", uid, "savedVideos", props.data.id);
-                //     setDoc(saveVideoRef, { location: props.data.location }, { merge: true });
-                // }
-                setUser(user);
-                setIsLoading(false);
-            // ...
-            } else {
-            setIsLoading(false);
+    //             // } else {
+    //             //     // User is signed in, see docs for a list of available properties
+    //             //     // https://firebase.google.com/docs/reference/js/auth.user
+    //             //     const saveVideoRef = doc(db, "userData", uid, "savedVideos", props.data.id);
+    //             //     setDoc(saveVideoRef, { location: props.data.location }, { merge: true });
+    //             // }
+    //             setUser(user);
+    //             setIsLoading(false);
+    //         // ...
+    //         } else {
+    //         setIsLoading(false);
             
-            }
-        });
-        // firebaseObserver.subscribe('authStateChanged', data => {
-        //     setAuthenticated(data);
-        //     setIsLoading(false);
-        // });
-        // return () => { firebaseObserver.unsubscribe('authStateChanged'); }
-    }, []);
+    //         }
+    //     });
+    //     // firebaseObserver.subscribe('authStateChanged', data => {
+    //     //     setAuthenticated(data);
+    //     //     setIsLoading(false);
+    //     // });
+    //     // return () => { firebaseObserver.unsubscribe('authStateChanged'); }
+    // }, []);
     
-    let render;
+    // let render;
 
-    if (isLoading) {
-        render = (
-            <>
-              <p>Loading user data...</p>
-              {/* {<p className="bg-danger text-light p-3 mb-2">Failed to fetch the user data</p>} */}
-            </>
-          );
-    } else {
-        render = props.categoriesQuerySnapshot.map((doc) => {
-            // doc.data() is never undefined for query doc snapshots
-            // console.log(doc.id, " => ", doc.data());
-            const data = doc.data();
-            return (<VideoCard identifier={doc.id} user={user} data={data} tooltip={user? "" : "You must sign-in to save"}/>);
-        });
-    }
+    // if (isLoading) {
+    //     render = (
+    //         <>
+    //           <p>Loading user data...</p>
+    //           {/* {<p className="bg-danger text-light p-3 mb-2">Failed to fetch the user data</p>} */}
+    //         </>
+    //       );
+    // } else {
+    //     render = props.categoriesQuerySnapshot.map((doc) => {
+    //         // doc.data() is never undefined for query doc snapshots
+    //         // console.log(doc.id, " => ", doc.data());
+    //         const data = doc.data();
+    //         return (<VideoCard identifier={doc.id} user={user} data={data} tooltip={user? "" : "You must sign-in to save"}/>);
+    //     });
+    // }
 
     return (
         <section className="homepage-cards-section" aria-label="a collection of stories">
             <div className="container homepage-cards"> 
                 <div className="row">
-                    {render}
+                    {categoryVideos}
                 </div> 
                     
             </div>

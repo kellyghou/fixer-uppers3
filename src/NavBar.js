@@ -61,8 +61,7 @@ export function NavBar() {
   if (isLoading) {
       render = (
           <>
-            <p>Loading user data...</p>
-            {/* {<p className="bg-danger text-light p-3 mb-2">Failed to fetch the user data</p>} */}
+            
           </>
         );
   } else {
