@@ -51,7 +51,7 @@ export default function CategoriesList(props) {
     })
 
     return (
-        <section className="homepage-cards-section" aria-label="a collection of stories">
+        <section className="homepage-cards-section" aria-label="a collection of cards">
             <div className="container homepage-cards"> 
                 <div className="row">
                     {categoryCards}
