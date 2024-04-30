@@ -1,37 +1,32 @@
 import { React, useState, useEffect } from 'react';
 import { auth } from './Firebase.js';
 import { onAuthStateChanged } from "firebase/auth";
-import { AppBar, Avatar, Button, Container, IconButton, Toolbar, Typography, Box, Menu, MenuItem, Tooltip } from "@mui/material";
-import AdbIcon from '@mui/icons-material/Adb';
-import MenuIcon from '@mui/icons-material/Menu';
+import { AppBar, Button, IconButton, Toolbar, Typography, Box} from "@mui/material";
 import PersonIcon from '@mui/icons-material/Person';
-import { HomeLogo } from './About';
 import logoImage from "./img/ecofriendslogo.png";
 import cacheImages from './CacheImages';
 import {Link as RouterLink} from 'react-router-dom';
-const pages = ['Explore', 'About'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 cacheImages([logoImage]);
 
 export function NavBar() {
-  const [anchorElNav, setAnchorElNav] = useState(null);
-  const [anchorElUser, setAnchorElUser] = useState(null);
+  // const [anchorElNav, setAnchorElNav] = useState(null);
+  // const [anchorElUser, setAnchorElUser] = useState(null);
 
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
+  // const handleOpenNavMenu = (event) => {
+  //   setAnchorElNav(event.currentTarget);
+  // };
+  // const handleOpenUserMenu = (event) => {
+  //   setAnchorElUser(event.currentTarget);
+  // };
 
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
+  // const handleCloseNavMenu = () => {
+  //   setAnchorElNav(null);
+  // };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+  // const handleCloseUserMenu = () => {
+  //   setAnchorElUser(null);
+  // };
 
   const [isLoading, setIsLoading] = useState(true);
   const [user, setUser] = useState();
