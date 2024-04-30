@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { auth, db } from "./Firebase.js";
 import { doc, setDoc } from "firebase/firestore"; 
 import { createUserWithEmailAndPassword, deleteUser } from "firebase/auth";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export function Signup() {
-    // const navigate = useNavigate(); from react-router-dom
+    const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -24,11 +24,12 @@ export function Signup() {
                     setDoc(doc(db, "userData", uid, "savedVideos", "exists"), {
                     exists: "true"
                     });
+                    
                 })
                 .catch(function (error) {
                     console.log(error) // FIX ERROR HANDLING!!!!!!!!!!!!!! DELETE USER IF COULDNT MAKE DOC
                 });;
-                // navigate("/");
+                navigate("/profile");
             } catch { //HAVENT TESTED THIS YET !!!!!!!!!!!!!!!!!!!!!!!!
                 deleteUser(auth.currentUser).then(() => {
                     // User deleted.

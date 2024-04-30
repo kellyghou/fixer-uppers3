@@ -1,147 +1,113 @@
-import { AppBar, Container, Toolbar, AdbIcon, Typography, Box, IconButton, MenuIcon, Menu, MenuItem, Tooltip } from "@mui/material";
-const pages = ['Explore', 'About'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+import { React, useState, useEffect } from 'react';
+import { auth } from './Firebase.js';
+import { onAuthStateChanged } from "firebase/auth";
+import { AppBar, Button, IconButton, Toolbar, Typography, Box} from "@mui/material";
+import PersonIcon from '@mui/icons-material/Person';
+import logoImage from "./img/ecofriendslogo.png";
+import cacheImages from './CacheImages';
+import {Link as RouterLink} from 'react-router-dom';
+
+cacheImages([logoImage]);
 
 export function NavBar() {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  // const [anchorElNav, setAnchorElNav] = useState(null);
+  // const [anchorElUser, setAnchorElUser] = useState(null);
 
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
+  // const handleOpenNavMenu = (event) => {
+  //   setAnchorElNav(event.currentTarget);
+  // };
+  // const handleOpenUserMenu = (event) => {
+  //   setAnchorElUser(event.currentTarget);
+  // };
 
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
+  // const handleCloseNavMenu = () => {
+  //   setAnchorElNav(null);
+  // };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+  // const handleCloseUserMenu = () => {
+  //   setAnchorElUser(null);
+  // };
+
+  const [isLoading, setIsLoading] = useState(true);
+  const [user, setUser] = useState();
+  useEffect(() => {
+      onAuthStateChanged(auth, (user) => {
+          if (user) {
+              // if (isSaved(uid)) {
+                  
+              // } else {
+              //     // User is signed in, see docs for a list of available properties
+              //     // https://firebase.google.com/docs/reference/js/auth.user
+              //     const saveVideoRef = doc(db, "userData", uid, "savedVideos", props.data.id);
+              //     setDoc(saveVideoRef, { location: props.data.location }, { merge: true });
+              // }
+              setUser(user);
+              setIsLoading(false);
+          // ...
+          } else {
+          setIsLoading(false);
+          
+          }
+      });
+      // firebaseObserver.subscribe('authStateChanged', data => {
+      //     setAuthenticated(data);
+      //     setIsLoading(false);
+      // });
+      // return () => { firebaseObserver.unsubscribe('authStateChanged'); }
+  }, []);
+  
+  let render;
+
+  if (isLoading) {
+      render = (
+          <>
+            <p>Loading user data...</p>
+            {/* {<p className="bg-danger text-light p-3 mb-2">Failed to fetch the user data</p>} */}
+          </>
+        );
+  } else {
+    if (user) {
+      render = (
+        <IconButton
+          size="large"
+          edge="start"
+          color='black'
+          aria-label="menu"
+          component={RouterLink}
+          to='/profile'
+          // sx={{ right: '2rem' }}
+        >
+          <PersonIcon />
+        </IconButton>
+      );
+    } else {
+      render = (
+        <Button color="inherit" href='/login'>Login</Button>
+      );
+    }
+  }
 
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            LOGO
-          </Typography>
-
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
+    <Box sx={{ height: '6rem', width: '100%' }}>
+      <AppBar sx={{ background: '-webkit-linear-gradient(0deg, #ffdab3, #ffa94d)', height: '6rem' }}position="static">
+        <Toolbar sx={{ height: '6rem', width: '100%', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
+          <Box sx={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
+            <Box component={RouterLink} to='/home' sx={{textDecoration: 'none', display: 'flex', flexDirection: 'row', alignItems: 'center', marginRight: '1rem'}}>
+              <Box component="img" src={logoImage} sx={{display: 'inline-block', width: '3.5rem', height: '3.5rem'}} />
+              <Typography sx={{fontWeight: '700', fontSize: '2rem', display: 'inline-block', color: 'black', textDecoration: 'none'}}>EcoFriends</Typography>
+            </Box>
+            <Typography variant="h6" component={RouterLink} to='/explore' sx={{ marginRight: '1rem', marginLeft: '1rem', color: 'black', textDecoration: 'none'}}>
+              Explore
+            </Typography>
+            <Typography variant="h6" component={RouterLink} to='/about' sx={{ marginRight: '1rem', marginLeft: '1rem', color: 'black', textDecoration: 'none'}}>
+              About
+            </Typography>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            LOGO
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
-            ))}
-          </Box>
-
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
+          <Box sx={{display: 'inline-block', justifyContent: 'flex-end'}}>
+            {render}
           </Box>
         </Toolbar>
-      </Container>
-    </AppBar>
+      </AppBar>
+    </Box>
   );
 }

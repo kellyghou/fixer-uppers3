@@ -3,7 +3,7 @@ import { collection, query, where, getDocs } from "firebase/firestore";
 import VideosList from './VideoCards.js';
 import Filters from './Filters.js';
 import { Footer } from './About.js';
-import { NavBar } from './About.js';
+import { NavBar } from './NavBar.js';
 import { useParams } from 'react-router-dom';
 import { ExploreWelcome } from './WelcomeComponents.js';
 import { db } from './Firebase.js';
