@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { auth } from "./Firebase";
-import { Footer } from './About.js';
+import { Footer } from "./About.js";
 import { NavBar } from "./NavBar.js";
+import { Typography } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword  } from "firebase/auth";
 import 'firebaseui/dist/firebaseui.css'
@@ -27,6 +28,9 @@ export function LoginPage() {
         <div>
             <NavBar/>
             <main>
+                <Typography variant='h4' sx={{'& .MuiTypography-root.MuiTypography-h1' : {outline: 'black solid 1px'}, fontWeight: 500, marginTop: '9.5rem', display: 'block', textAlign: 'center', color: '#009999'}}>
+                    Log in to Your EcoFriends Account
+                </Typography>
                 <div className = "container">
                     <div className = "row justify-content-center">
                         <form className = "col-md-4 mt-3 pt-3 pb-3">
@@ -44,13 +48,14 @@ export function LoginPage() {
                                 <label htmlFor = "exampleInputPassword1" className = "form-label">Password</label>
                             </div>
                             <div className = "d-grid">
-                                <button type = "submit" className = "btn btn-primary pt-3 pb-3" onClick = {(e) => loginWithUsernameAndPassword(e)}>Submit</button>
+                                <button type = "submit" id = "login_button" className = "btn btn-primary pt-3 pb-3" onClick = {(e) => loginWithUsernameAndPassword(e)}>Sign In</button>
                             </div>
                             <div className = "mt-3 text-center">
-                                <span>Need to sign up for an account? <Link to = "/signup">Click here.</Link></span>
+                                <span>Don't have an account? <Link to = "/signup">Click here.</Link></span>
                             </div>
                         </form>
                     </div>
+                    <Typography variant='h4' sx={{'& .MuiTypography-root.MuiTypography-h1' : {outline: 'black solid 1px'}, marginTop: '9.5rem'}}></Typography>
                 </div>
             </main>
             <Footer/>

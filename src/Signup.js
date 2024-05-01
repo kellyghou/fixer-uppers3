@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { auth, db } from "./Firebase.js";
 import { doc, setDoc } from "firebase/firestore";
-import { Footer } from './About.js';
+import { Footer } from "./About.js";
 import { NavBar } from "./NavBar.js";
+import { Typography } from "@mui/material";
 import { createUserWithEmailAndPassword, deleteUser } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -49,6 +50,9 @@ export function Signup() {
         <div>
             <NavBar/>
             <main>
+                <Typography variant='h4' sx={{'& .MuiTypography-root.MuiTypography-h1' : {outline: 'black solid 1px'}, fontWeight: 500, marginTop: '8rem', display: 'block', textAlign: 'center', color: '#009999'}}>
+                    Create Your EcoFriends Account
+                </Typography>
                 <div className = "container">
                     <div className = "row justify-content-center">
                         <form className = "col-md-4 mt-3 pt-3 pb-3">
@@ -70,7 +74,7 @@ export function Signup() {
                                 <label htmlFor = "confirmPassword" className = "form-label">Confirm Password</label>
                             </div>                    
                             <div className = "d-grid">
-                                <button type = "submit" className = "btn btn-primary pt-3 pb-3" onClick = {(e) => signupWithUsernameAndPassword(e)}>Signup</button>
+                                <button type = "submit" id = "login_button" className = "btn btn-primary pt-3 pb-3" onClick = {(e) => signupWithUsernameAndPassword(e)}>Sign Up</button>
                             </div>
                             <div className = "mt-3 text-center">
                                 <span>Go back to login? <Link to = "/">Click here.</Link></span>
@@ -78,6 +82,7 @@ export function Signup() {
                         </form>
                     </div>
                 </div>
+                <Typography variant='h4' sx={{'& .MuiTypography-root.MuiTypography-h1' : {outline: 'black solid 1px'}, marginTop: '8rem'}}></Typography>
             </main>
             <Footer/>
         </div>
