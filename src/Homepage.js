@@ -9,7 +9,7 @@ export function HomePage(props) {
 
     return (
         <div>
-            <NavBar />
+            <NavBar/>
             <main className='homepage-content'>
                 <HomeWelcome/>
                 <div id='cards'>
@@ -19,7 +19,7 @@ export function HomePage(props) {
                     <CategoriesList cardData={props.cardData} /*setHomepageCategory={setHomepageCategory}*//>
                 </div>
             </main>
-            <Footer />
+            <Footer/>
         </div>
     );
 }
