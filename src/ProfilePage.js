@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { auth, db } from "./Firebase.js";
 import { signOut } from "firebase/auth";
-import { Card, CardMedia, CardContent, Typography, CardActionArea, Modal, Tooltip} from '@mui/material';
+import { Card, CardMedia, CardContent, Typography, CardActionArea, Modal, Tooltip, Button} from '@mui/material';
 // import { styled } from '@mui/material/styles';
 // import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import React from 'react';
@@ -32,11 +32,13 @@ export function ProfilePage() {
     const [videoData, setVideoData] = useState([]);
     const [alertMessage, setAlertMessage] = useState(null);
     const [isFetching, setIsFetching] = useState(true);
+    const [isLoadingUser, setIsLoadingUser] = useState(true);
     const[user, setUser] = useState();
   
   
     useEffect(() => {
       setIsFetching(true);
+      setIsLoadingUser(true);
       onAuthStateChanged(auth, (user) => {
         if (user) {
             // if (isSaved(uid)) {
@@ -49,6 +51,7 @@ export function ProfilePage() {
             // }
             // setUser(user);
             // setIsLoading(false);
+            setIsLoadingUser(false);
             const saveVideoCollectionRef = collection(db, "userData", user.uid, "savedVideos");
             getDocs(saveVideoCollectionRef)
                 .then(function(snapshot) {
@@ -66,6 +69,7 @@ export function ProfilePage() {
             setUser(user);
         // ...
         } else {
+            setIsLoadingUser(false);
             navigate("/home");
         }
     });
@@ -74,7 +78,13 @@ export function ProfilePage() {
   
   
     let render;
-  
+
+    let renderLogout;
+    if (isLoadingUser) {
+        renderLogout = <></>;
+    } else {
+        renderLogout = <Button onClick={logoutUser}>Logout</Button>
+    }
     if (isFetching) {
       render = (
         <>
@@ -101,6 +111,7 @@ export function ProfilePage() {
         // </div>     
         <>
             <NavBar />
+            {renderLogout}
             {render}
         </>  
     )    
