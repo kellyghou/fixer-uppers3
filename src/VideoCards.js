@@ -35,7 +35,7 @@ function VideoCard(props) {
         } else {
             setSaved(false);
         }
-      });
+      }, [user, key]);
 
     const style = {
         position: 'absolute',
