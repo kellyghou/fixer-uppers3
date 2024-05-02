@@ -239,3 +239,8 @@ input:hover {
 .image-caption {
   text-align: center;
 }
+
+#login_button {
+  background-color: #ffbf80;
+  color: black;
+}

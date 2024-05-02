@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { auth, db } from "./Firebase.js";
-import { doc, setDoc } from "firebase/firestore"; 
+import { doc, setDoc } from "firebase/firestore";
+import { Footer } from "./About.js";
+import { NavBar } from "./NavBar.js";
+import { Typography } from "@mui/material";
 import { createUserWithEmailAndPassword, deleteUser } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -44,34 +47,44 @@ export function Signup() {
     };
 
     return(
-        <div className = "container">
-            <div className = "row justify-content-center">
-                <form className = "col-md-4 mt-3 pt-3 pb-3">
-                    { "" !== notice &&
-                        <div className = "alert alert-warning" role = "alert">
-                            { notice }    
-                        </div>
-                    }
-                    <div className = "form-floating mb-3">
-                        <input id = "signupEmail" type = "email" className = "form-control" aria-describedby = "emailHelp" placeholder = "name@example.com" value = { email } onChange = { (e) => setEmail(e.target.value) }></input>
-                        <label htmlFor = "signupEmail" className = "form-label">Enter an email address for your username</label>
+        <div>
+            <NavBar/>
+            <main>
+                <Typography variant='h4' sx={{'& .MuiTypography-root.MuiTypography-h1' : {outline: 'black solid 1px'}, fontWeight: 500, marginTop: '8rem', display: 'block', textAlign: 'center', color: '#009999'}}>
+                    Create Your EcoFriends Account
+                </Typography>
+                <div className = "container">
+                    <div className = "row justify-content-center">
+                        <form className = "col-md-4 mt-3 pt-3 pb-3">
+                            { "" !== notice &&
+                                <div className = "alert alert-warning" role = "alert">
+                                    { notice }    
+                                </div>
+                            }
+                            <div className = "form-floating mb-3">
+                                <input id = "signupEmail" type = "email" className = "form-control" aria-describedby = "emailHelp" placeholder = "name@example.com" value = { email } onChange = { (e) => setEmail(e.target.value) }></input>
+                                <label htmlFor = "signupEmail" className = "form-label">Enter an email address for your username</label>
+                            </div>
+                            <div className = "form-floating mb-3">
+                                <input id = "signupPassword" type = "password" className = "form-control" placeholder = "Password" value = { password } onChange = { (e) => setPassword(e.target.value) }></input>
+                                <label htmlFor = "signupPassword" className = "form-label">Password</label>
+                            </div>
+                            <div className = "form-floating mb-3">
+                                <input id = "confirmPassword" type = "password" className = "form-control" placeholder = "Confirm Password" value = { confirmPassword } onChange = { (e) => setConfirmPassword(e.target.value) }></input>
+                                <label htmlFor = "confirmPassword" className = "form-label">Confirm Password</label>
+                            </div>                    
+                            <div className = "d-grid">
+                                <button type = "submit" id = "login_button" className = "btn btn-primary pt-3 pb-3" onClick = {(e) => signupWithUsernameAndPassword(e)}>Sign Up</button>
+                            </div>
+                            <div className = "mt-3 text-center">
+                                <span>Go back to login? <Link to = "/">Click here.</Link></span>
+                            </div>                    
+                        </form>
                     </div>
-                    <div className = "form-floating mb-3">
-                        <input id = "signupPassword" type = "password" className = "form-control" placeholder = "Password" value = { password } onChange = { (e) => setPassword(e.target.value) }></input>
-                        <label htmlFor = "signupPassword" className = "form-label">Password</label>
-                    </div>
-                    <div className = "form-floating mb-3">
-                        <input id = "confirmPassword" type = "password" className = "form-control" placeholder = "Confirm Password" value = { confirmPassword } onChange = { (e) => setConfirmPassword(e.target.value) }></input>
-                        <label htmlFor = "confirmPassword" className = "form-label">Confirm Password</label>
-                    </div>                    
-                    <div className = "d-grid">
-                        <button type = "submit" className = "btn btn-primary pt-3 pb-3" onClick = {(e) => signupWithUsernameAndPassword(e)}>Signup</button>
-                    </div>
-                    <div className = "mt-3 text-center">
-                        <span>Go back to login? <Link to = "/">Click here.</Link></span>
-                    </div>                    
-                </form>
-            </div>
+                </div>
+                <Typography variant='h4' sx={{'& .MuiTypography-root.MuiTypography-h1' : {outline: 'black solid 1px'}, marginTop: '8rem'}}></Typography>
+            </main>
+            <Footer/>
         </div>
     )
 }
