@@ -35,7 +35,7 @@ function VideoCard(props) {
         } else {
             setSaved(false);
         }
-      }, []);
+      });
 
     const style = {
         position: 'absolute',
@@ -139,7 +139,7 @@ export default function VideosList(props) {
         const data = doc.data();
         console.log(data); // RENDERS MULTIPLE TIMES WHEN ENTERING PASSWORD???
         if (doc.id === 'exists') {
-            return;
+            return <></>;
         }
         return (<VideoCard identifier={doc.id} user={user} data={data} tooltip={user? "" : "You must sign-in to save"}/>);
     });

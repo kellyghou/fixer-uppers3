@@ -1,13 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { auth, db } from "./Firebase.js";
-import { signOut, deleteUser } from "firebase/auth";
-import {Typography, Modal, Button} from '@mui/material';
+import { signOut } from "firebase/auth";
+import { Modal, Button} from '@mui/material';
 // import { styled } from '@mui/material/styles';
 // import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { onAuthStateChanged, reauthenticateWithCredential, EmailAuthProvider } from "firebase/auth";
-import { doc, deleteDoc, getDocs, collection } from "firebase/firestore";
+import { getDocs, collection } from "firebase/firestore";
 import { NavBar } from "./NavBar.js";
 import VideosList from './VideoCards.js';
 import { ProfileWelcome } from './WelcomeComponents.js';
@@ -23,7 +23,7 @@ export function ProfilePage() {
     const [isLoadingUser, setIsLoadingUser] = useState(true);
     const[user, setUser] = useState();
     const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
+    // const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const [password, setPassword] = useState("");
     const [notice, setNotice] = useState("");
@@ -68,8 +68,8 @@ export function ProfilePage() {
             setUser(user);
         // ...
         } else {
-            render = <Typography>You need to sign in to view your profile</Typography>
-            renderLogout = <></>
+            // render = <Typography>You need to sign in to view your profile</Typography>
+            // renderLogout = <></>
             setIsLoadingUser(false);
             setIsFetching(false);
         }
@@ -109,28 +109,28 @@ export function ProfilePage() {
 
 
 
-    const deleteAccount = async (e) => {
-        e.preventDefault();
+    // const deleteAccount = async (e) => {
+    //     e.preventDefault();
 
-        deleteUser(user)
-        .then(() => {
-            const userDataRef = doc(db, "userData", user.uid);
-            deleteDoc(userDataRef)
-          })
-          .then(() => {
-            console.log("deleted")
-            // navigate("/");
-          })
-          .catch((error) => {
-            // console.log(error.prototype.toString());
-            // console.log(error instanceof FirebaseAuthRecentLoginRequiredException)
-            if (error.toString().includes('auth/requires-recent-login')) {
-                setOpen(true);
-            } else {
-                console.log(error);
-            }
-          })
-    }
+    //     deleteUser(user)
+    //     .then(() => {
+    //         const userDataRef = doc(db, "userData", user.uid);
+    //         deleteDoc(userDataRef)
+    //       })
+    //       .then(() => {
+    //         console.log("deleted")
+    //         // navigate("/");
+    //       })
+    //       .catch((error) => {
+    //         // console.log(error.prototype.toString());
+    //         // console.log(error instanceof FirebaseAuthRecentLoginRequiredException)
+    //         if (error.toString().includes('auth/requires-recent-login')) {
+    //             setOpen(true);
+    //         } else {
+    //             console.log(error);
+    //         }
+    //       })
+    // }
   
   
     
