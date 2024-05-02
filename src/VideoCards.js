@@ -138,7 +138,7 @@ export default function VideosList(props) {
         // doc.data() is never undefined for query doc snapshots
         // console.log(doc.id, " => ", doc.data());
         const data = doc.data();
-        console.log(data);
+        console.log(data); // RENDERS MULTIPLE TIMES WHEN ENTERING PASSWORD???
         if (doc.id === 'exists') {
             return;
         }
