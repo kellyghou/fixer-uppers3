@@ -3,8 +3,7 @@ import { Card, CardMedia, CardContent, Typography, CardActionArea, Modal, Toolti
 // import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { onAuthStateChanged } from "firebase/auth";
-import { auth, db } from "./Firebase.js";
+import { db } from "./Firebase.js";
 import { doc, setDoc, deleteDoc, getDoc } from "firebase/firestore";
 import SmartDisplayIcon from '@mui/icons-material/SmartDisplay';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';

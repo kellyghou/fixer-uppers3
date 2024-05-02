@@ -1,16 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { auth, db } from "./Firebase.js";
 import { signOut, deleteUser } from "firebase/auth";
-import { Card, CardMedia, CardContent, Typography, CardActionArea, Modal, Tooltip, Button} from '@mui/material';
+import {Typography, Modal, Button} from '@mui/material';
 // import { styled } from '@mui/material/styles';
 // import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { onAuthStateChanged, reauthenticateWithCredential, EmailAuthProvider } from "firebase/auth";
-import { doc, setDoc, deleteDoc, getDocs, collection } from "firebase/firestore";
-import SmartDisplayIcon from '@mui/icons-material/SmartDisplay';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import { doc, deleteDoc, getDocs, collection } from "firebase/firestore";
 import { NavBar } from "./NavBar.js";
 import VideosList from './VideoCards.js';
 import { ProfileWelcome } from './WelcomeComponents.js';
