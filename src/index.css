@@ -258,3 +258,7 @@ input:hover {
   margin-bottom: 10px;
   /*line-height: 1; */
 }
+#login_button {
+  background-color: #ffbf80;
+  color: black;
+}

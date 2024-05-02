@@ -7,14 +7,14 @@ import { AboutMainContent } from './About.js';
 export function AboutPage() {
     return (
         <div>
-            <NavBar />
+            <NavBar/>
             <header>
                 <h1 className="title">About Us</h1>
             </header>
             <main>
-                <AboutMainContent />
+                <AboutMainContent/>
             </main>
-            <Footer />
+            <Footer/>
         </div>
     );
 }
