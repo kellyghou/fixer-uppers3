@@ -78,7 +78,10 @@ function MissionStatement() {
    return (
      <div className='about-container'>
        <div className='mission-box'>
-         <p>Every human carbon footprint contributes to all species of the environment. Our mission is to initiate change day by day and step by step.</p>
+         <p>Every human carbon footprint contributes to all species of the environment. <br></br>
+            Our mission is to influence our users through our content. <br></br>
+            Eco Friends is a way to become friendlier with the environment!
+         </p>
        </div>
        <div className='right-content'>
          <GoalStatement />

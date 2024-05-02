@@ -1,3 +1,11 @@
+Our group has decided to open source our project. This documentation will be available for future group projects for initial set up. We have attached our contact details on the Handoff document incase members need to be reached for GitHub repository access or Firebase set up queries.
+
+Presentation Deck URL:
+https://docs.google.com/presentation/d/1fZcsnHEvCUSz8IrYONgDlmHli-4-AAGkIENa1yC2N7o/edit?usp=sharing 
+
+Final Website URL:
+https://fixer-uppers3.web.app/
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
