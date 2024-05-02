@@ -81,7 +81,7 @@ export function NavBar() {
       );
     } else {
       render = (
-        <Button color="inherit" href='/login'>Login</Button>
+        <Button color="black" href='/login'>Login</Button>
       );
     }
   }
