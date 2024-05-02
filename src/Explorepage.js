@@ -77,11 +77,11 @@ export function ExplorePage() {
 
   return (
     <>
-      <NavBar />
-      <ExploreWelcome />
+      <NavBar/>
+      <ExploreWelcome/>
       <Filters uniqueCategory={categoryList} applyFilterCallback={applyFilter} homepageCategory={homepageCategory}/>
       {render}
-      <Footer />
+      <Footer/>
     </>
   );
 }
