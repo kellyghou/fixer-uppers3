@@ -22,6 +22,15 @@ export function ExploreWelcome() {
     );
 }
 
+export function ProfileWelcome(props) {
+    return (
+        <Box sx={{margin: 'auto'}}>
+            <Typography variant='h1' sx={{'& .MuiTypography-root.MuiTypography-h1' : {outline: 'black solid 1px'}, marginTop: '2rem', marginBottom: '2rem', display: 'block', textAlign: 'center', color: '#009999'}}>
+                {`Welcome ${props.username}`}
+            </Typography>
+        </Box>
+    );
+}
 export function HomeWelcome() {
     return (
         <Box sx={{display: 'flex', flexDirection: 'column', marginBottom: '6rem', height: 'calc(100vh - 6rem)', backgroundImage: `url(${homepageWelcomeImage})`, backgroundRepeat: "no-repeat", backgroundSize: "cover"}}>
