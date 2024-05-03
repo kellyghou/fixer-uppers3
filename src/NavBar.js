@@ -81,7 +81,7 @@ export function NavBar() {
       );
     } else {
       render = (
-        <Button color="black" href='/login'>Login</Button>
+        <Button sx={{color: "black"}} href='/login'>Login</Button>
       );
     }
   }
