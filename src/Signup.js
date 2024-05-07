@@ -77,7 +77,7 @@ export function Signup() {
                                 <button type = "submit" id = "login_button" className = "btn btn-primary pt-3 pb-3" onClick = {(e) => signupWithUsernameAndPassword(e)}>Sign Up</button>
                             </div>
                             <div className = "mt-3 text-center">
-                                <span>Go back to login? <Link to = "/">Click here.</Link></span>
+                                <span>Already have an account? <Link to = "/login">Log in here.</Link></span>
                             </div>                    
                         </form>
                     </div>
