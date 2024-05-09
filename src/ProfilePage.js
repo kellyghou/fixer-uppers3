@@ -142,16 +142,15 @@ export function ProfilePage() {
     }
     if (isFetching) {
       render = (
-        <>
+        <Box sx={{height: 'calc(100vh - 15rem)'}}>
           <p>Loading saved videos...</p>
           {alertMessage && <p className="bg-danger text-light p-3 mb-2">Failed to fetch the data. Error: {alertMessage}</p>}
-        </>
+        </Box>
       );
     } else {
-      render = (<Box sx={{backgroundImage:`url(./img/profilePageBackground.png)`, backgroundRepeat: "no-repeat", backgroundSize: "cover"}}>
+      render = (<>
         <ProfileWelcome username={user.email}/>
         <VideosList categoriesQuerySnapshot={videoData} user={user}/>
-        <Footer/>
         {/* <Button onClick={deleteAccount}>Delete Account</Button> */}
         {/* <Modal
             open={open}
@@ -183,7 +182,7 @@ export function ProfilePage() {
                 </div> */}
             {/* </Box> */}
         {/* </Modal> */}
-      </Box>);
+        </>);
     }
 
     
@@ -201,8 +200,11 @@ export function ProfilePage() {
         // </div>     
         <>
             <NavBar />
+            <Box sx={{backgroundImage:`url(./img/profilePageBackground.png)`, backgroundRepeat: "no-repeat", backgroundSize: "cover"}}>
             {renderLogout}
             {render}
+            </Box>
+            <Footer/>
         </>  
     )    
 }
