@@ -1,16 +1,17 @@
 import { useNavigate } from "react-router-dom";
 import { auth, db } from "./Firebase.js";
 import { signOut } from "firebase/auth";
-import { Modal, Button} from '@mui/material';
+import { Button, Box} from '@mui/material';
 // import { styled } from '@mui/material/styles';
 // import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { onAuthStateChanged, reauthenticateWithCredential, EmailAuthProvider } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth"; //reauthenticateWithCredential, EmailAuthProvider
 import { getDocs, collection } from "firebase/firestore";
 import { NavBar } from "./NavBar.js";
 import VideosList from './VideoCards.js';
 import { ProfileWelcome } from './WelcomeComponents.js';
+import { Footer } from "./About.js";
 
 
 
@@ -22,11 +23,11 @@ export function ProfilePage() {
     const [isFetching, setIsFetching] = useState(true);
     const [isLoadingUser, setIsLoadingUser] = useState(true);
     const[user, setUser] = useState();
-    const [open, setOpen] = useState(false);
+    // const [open, setOpen] = useState(false);
     // const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
-    const [password, setPassword] = useState("");
-    const [notice, setNotice] = useState("");
+    // const handleClose = () => setOpen(false);
+    // const [password, setPassword] = useState("");
+    // const [notice, setNotice] = useState("");
   
     const navigate = useNavigate();
 
@@ -84,25 +85,25 @@ export function ProfilePage() {
         navigate("/");
     }
 
-    const promptForCredentials = async (e) => {
-        e.preventDefault();
-        try {
-            const credential = EmailAuthProvider.credential(
-                auth.currentUser.email,
-                password
-            );
+    // const promptForCredentials = async (e) => {
+    //     e.preventDefault();
+    //     try {
+    //         const credential = EmailAuthProvider.credential(
+    //             auth.currentUser.email,
+    //             password
+    //         );
 
-            await reauthenticateWithCredential(
-                auth.currentUser, 
-                credential
-            );
+    //         await reauthenticateWithCredential(
+    //             auth.currentUser, 
+    //             credential
+    //         );
 
-            setOpen(false);
-        } catch {
-            setNotice("Something went wrong with reauthenticating credentials.");
-        } 
-        //credential = auth.getCredential("user@example.com", "password1234");
-    }
+    //         setOpen(false);
+    //     } catch {
+    //         setNotice("Something went wrong with reauthenticating credentials.");
+    //     } 
+    //     //credential = auth.getCredential("user@example.com", "password1234");
+    // }
 
 
     
@@ -137,28 +138,28 @@ export function ProfilePage() {
     if (isLoadingUser) {
         renderLogout = <></>;
     } else {
-        renderLogout = <Button variant="contained" onClick={logoutUser} sx={{right: '1rem', position: 'absolute', top: '7rem'}}>Logout</Button>
+        renderLogout = <Button variant="contained" onClick={logoutUser} sx={{backgroundColor: '#DCDCDC', color: 'black', right: '1rem', position: 'absolute', top: '7rem'}}>Logout</Button>
     }
     if (isFetching) {
       render = (
-        <>
+        <Box sx={{height: 'calc(100vh - 15rem)'}}>
           <p>Loading saved videos...</p>
           {alertMessage && <p className="bg-danger text-light p-3 mb-2">Failed to fetch the data. Error: {alertMessage}</p>}
-        </>
+        </Box>
       );
     } else {
       render = (<>
         <ProfileWelcome username={user.email}/>
         <VideosList categoriesQuerySnapshot={videoData} user={user}/>
         {/* <Button onClick={deleteAccount}>Delete Account</Button> */}
-        <Modal
+        {/* <Modal
             open={open}
             onClose={handleClose}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
-        >
+        > */}
             {/* <Box sx={style}> */}
-                <div className = "row justify-content-center">
+                {/* <div className = "row justify-content-center">
                     <form className = "col-md-4 mt-3 pt-3 pb-3">
                         { "" !== notice &&
                             <div className = "alert alert-warning" role = "alert">
@@ -166,10 +167,10 @@ export function ProfilePage() {
                             </div>
                         }                  
                         <div className = "form-floating mb-3">
-                            <span>Please reauthenticate your credentials before deleting your accoung:</span>
+                            <span>Please reauthenticate your credentials before deleting your accoung:</span> */}
                             {/* <input type = "email" className = "form-control" id = "exampleInputEmail1" aria-describedby = "emailHelp" placeholder = "name@example.com" value = { email } onChange = { (e) => setEmail(e.target.value) }></input>
                             <label htmlFor = "exampleInputEmail1" className = "form-label">Email address</label> */}
-                        </div>
+                        {/* </div>
                         <div className = "form-floating mb-3">
                             <input type = "password" className = "form-control" id = "exampleInputPassword1" placeholder = "Password" value = { password } onChange = { (e) => setPassword(e.target.value) }></input>
                             <label htmlFor = "exampleInputPassword1" className = "form-label">Password</label>
@@ -178,10 +179,10 @@ export function ProfilePage() {
                             <button type = "submit" className = "btn btn-primary pt-3 pb-3" onClick = {(e) => promptForCredentials(e)}>Submit</button>
                         </div>
                     </form>
-                </div>
+                </div> */}
             {/* </Box> */}
-        </Modal>
-      </>);
+        {/* </Modal> */}
+        </>);
     }
 
     
@@ -199,8 +200,11 @@ export function ProfilePage() {
         // </div>     
         <>
             <NavBar />
+            <Box sx={{backgroundImage:`url(./img/profilePageBackground.png)`, backgroundRepeat: "no-repeat", backgroundSize: "cover"}}>
             {renderLogout}
             {render}
+            </Box>
+            <Footer/>
         </>  
     )    
 }

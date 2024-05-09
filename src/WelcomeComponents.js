@@ -25,8 +25,11 @@ export function ExploreWelcome() {
 export function ProfileWelcome(props) {
     return (
         <Box sx={{margin: 'auto'}}>
-            <Typography variant='h1' sx={{'& .MuiTypography-root.MuiTypography-h1' : {outline: 'black solid 1px'}, marginTop: '2rem', marginBottom: '2rem', display: 'block', textAlign: 'center', color: '#009999'}}>
+            <Typography variant='h3' sx={{'& .MuiTypography-root.MuiTypography-h1' : {outline: 'black solid 1px'}, paddingTop: '2rem', marginBottom: '2rem', display: 'block', textAlign: 'center', color: '#009999'}}>
                 {`Welcome ${props.username}`}
+            </Typography>
+            <Typography variant='h3' sx={{'& .MuiTypography-root.MuiTypography-h1' : {outline: 'black solid 1px'}, marginLeft: '18rem', fontStyle: 'italic', marginTop: '2rem', marginBottom: '2rem', display: 'block', textAlign: 'left', color: '#009999'}}>
+                Your Saved Posts:
             </Typography>
         </Box>
     );
