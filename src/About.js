@@ -132,7 +132,9 @@ function WhoWeAreStatement() {
    return (
        <section>
            <p className='about-heading'>
-           We created Eco Friends to help individuals tailor their lifestyle to make their living choices more healthy for them and the environment.
+                We created Eco Friends to help individuals tailor their lifestyle to make their living choices more healthy for them and the environment. <br></br>
+                As a group of 5 students from the University of Washington, we made this website to encourage sustainability in everyday life. <br></br>
+                All our videos are self curated and personalized to be able to reach everybody, especially within the Gen-Z community.
            </p>
        </section>
    );
