@@ -35,10 +35,13 @@ export function HomeWelcome() {
     return (
         <Box sx={{display: 'flex', flexDirection: 'column', marginBottom: '6rem', height: 'calc(100vh - 6rem)', backgroundImage: `url(${homepageWelcomeImage})`, backgroundRepeat: "no-repeat", backgroundSize: "cover"}}>
             <Box sx={{color: 'white', textAlign: 'left', paddingTop: '10rem', paddingLeft: '6rem'}}>
-                <Typography variant='h1' sx={{fontSize: '3.5rem', fontWeight: 500 , flexWrap: 'wrap', width: '45rem', marginBottom: '6rem'}}>
-                    Explore sustainability tips in one place.
+                <Typography variant='h1' sx={{fontSize: '3.5rem', fontWeight: 500 , flexWrap: 'wrap', width: '45rem', marginBottom: '3rem'}}>
+                    Explore sustainability tips in one place. 
                 </Typography>
                 <Box sx={{flexWrap: 'wrap', width: '60rem'}}>
+                    <Typography variant='h3' sx={{marginBottom: '3rem'}}>
+                        Every year, each person on average produces 19 tonnes of greenhouse gases and 1,642 pounds of trash.
+                    </Typography>
                     <Typography variant='h5'>
                         View our videos and blogs to learn how you can incorporate sustainable habits in your daily life to support and save our environment.
                     </Typography>
