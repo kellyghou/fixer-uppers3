@@ -25,7 +25,7 @@ export function LoginPage() {
     }
 
     return(
-        <div>
+        <div className='profilePageBackground'>
             <NavBar/>
             <main>
                 <Typography variant='h4' sx={{'& .MuiTypography-root.MuiTypography-h1' : {outline: 'black solid 1px'}, fontWeight: 500, marginTop: '9.5rem', display: 'block', textAlign: 'center', color: '#009999'}}>

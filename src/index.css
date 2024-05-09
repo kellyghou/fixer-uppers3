@@ -9,6 +9,12 @@ body {
   font-weight: 700;
 }
 
+.profilePageBackground {
+  background-image: url(./img/profilePageBackground.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 nav {
   background: -webkit-linear-gradient(0deg, #ffdab3, #ffa94d);
   margin: 0;
@@ -65,7 +71,7 @@ span {
 }
 
 .homepage-cards-section {
-  margin-bottom: 40px;
+  padding-bottom: 40px;
 }
 
 .homepage-title {
